@@ -1,2 +1,0 @@
-iOS Developer 
-git blog
