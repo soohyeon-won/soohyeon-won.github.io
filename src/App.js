@@ -1,7 +1,7 @@
 // src/App.js
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import TopicsList from "./TopicsList";
-import TopicDetail from "./TopicDetail";
+import TopicsList from "./components/TopicsList";
+import TopicDetail from "./components/TopicDetail";
 
 function App() {
   return (
