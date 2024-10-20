@@ -1,17 +1,18 @@
-// src/App.js
+// src/App.tsx
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TopicsList from "./components/TopicsList";
-import TopicDetail from "./components/TopicDetail";
+import TopicPage from "./components/TopicPage";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<TopicsList />} />
-        <Route path="/topic/:id" element={<TopicDetail />} />
+        <Route path="/topic/:id" element={<TopicPage />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
