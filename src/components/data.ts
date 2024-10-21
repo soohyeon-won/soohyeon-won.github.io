@@ -37,7 +37,43 @@ export const topics: Topic[] = [
         ],
         depth: 1,
     },
-    { id: "1.2", title: "Asynchronous JavaScript (Promises, async/await)", content: "Detailed content about Asynchronous JavaScript", depth: 1 },
+    {
+        id: "1.2",
+        title: "Asynchronous JavaScript (Promises, async/await)",
+        sections: [
+            {
+                title: "Promises(프로미스)",
+                content: "프로미스는 비동기 작업이 완료된 후의 결과 값을 나타내는 객체로, 성공(resolved) 또는 실패(rejected) 상태를 가집니다.",
+                code: `const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Success!');
+      }, 1000);
+    });
+    
+    promise.then(result => {
+      console.log(result); // 'Success!' 출력
+    }).catch(error => {
+      console.error(error);
+    });`,
+            },
+            {
+                title: "async/await",
+                content: "`async/await`는 비동기 코드를 작성하는 더 직관적인 방법을 제공하며, 프로미스를 보다 읽기 쉽게 다룰 수 있습니다.",
+                code: `const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    
+    fetchData();`,
+            },
+        ],
+        depth: 1,
+    },    
     { id: "1.3", title: "Functional programming concepts", content: "Detailed content about Functional programming concepts", depth: 1 },
 
     { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
