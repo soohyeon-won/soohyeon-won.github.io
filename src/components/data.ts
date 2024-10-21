@@ -109,6 +109,101 @@ export const topics: Topic[] = [
     { id: "8.3", title: "Code splitting", content: "Detailed content about Code splitting", depth: 1 },
     { id: "8.4", title: "Progressive Web Apps (PWAs)", content: "Detailed content about Progressive Web Apps (PWAs)", depth: 1 },
 
+    { id: "9", title: "JavaScript basic", content: "", depth: 0 },
+    {
+        id: "9-1",
+        title: "JavaScript basic",
+        content: "",
+        depth: 1,
+        sections: [
+          {
+            title: "Variables (변수)",
+            content: "자바스크립트에서 변수를 선언하는 방법과 변수의 종류에 대해 배웁니다.",
+            code: `// 변수 선언 예시
+      let name = 'Alice'; // 변경 가능한 변수
+      const age = 25; // 변경 불가능한 변수
+      var city = 'Seoul'; // ES5의 변수 선언 (스코프에 주의)`,
+          },
+          {
+            title: "Data Types (데이터 타입)",
+            content: "자바스크립트에서 사용하는 다양한 데이터 타입을 이해합니다.",
+            code: `// 데이터 타입 예시
+      let num = 42; // Number
+      let str = 'Hello'; // String
+      let isActive = true; // Boolean
+      let obj = { name: 'Alice', age: 25 }; // Object
+      let arr = [1, 2, 3]; // Array
+      let nothing = null; // Null
+      let notDefined; // Undefined`,
+          },
+          {
+            title: "Operators (연산자)",
+            content: "자바스크립트에서 사용할 수 있는 다양한 연산자에 대해 배웁니다.",
+            code: `// 연산자 예시
+      let sum = 5 + 3; // 덧셈
+      let isEqual = (5 === 5); // 비교
+      let increment = 1; 
+      increment++; // 증가`,
+          },
+          {
+            title: "Control Structures (제어 구조)",
+            content: "조건문과 반복문을 사용하여 흐름을 제어하는 방법을 배웁니다.",
+            code: `// 조건문 예시
+      if (age >= 18) {
+        console.log('성인입니다.');
+      } else {
+        console.log('미성년자입니다.');
+      }
+      
+      // 반복문 예시
+      for (let i = 0; i < 5; i++) {
+        console.log(i);
+      }`,
+          },
+          {
+            title: "Functions (함수)",
+            content: "함수의 정의와 호출 방법, 매개변수 및 반환값을 이해합니다.",
+            code: `// 함수 선언 예시
+      function greet(name) {
+        return 'Hello, ' + name + '!';
+      }
+      console.log(greet('Alice')); // 'Hello, Alice!'
+      
+      // 화살표 함수 예시
+      const add = (a, b) => a + b;
+      console.log(add(2, 3)); // 5`,
+          },
+          {
+            title: "Objects and Arrays (객체와 배열)",
+            content: "자바스크립트의 객체와 배열을 생성하고 사용하는 방법을 배웁니다.",
+            code: `// 객체 예시
+      let person = {
+        name: 'Alice',
+        age: 25,
+        greet: function() {
+          console.log('Hello, ' + this.name);
+        }
+      };
+      person.greet(); // 'Hello, Alice!'
+      
+      // 배열 예시
+      let fruits = ['apple', 'banana', 'orange'];
+      console.log(fruits[0]); // 'apple'`,
+          },
+          {
+            title: "ES6 Features (ES6 기능)",
+            content: "ES6에서 도입된 주요 기능들에 대해 배웁니다.",
+            code: `// 템플릿 리터럴
+      let name = 'Alice';
+      console.log(\`Hello, \${name}!\`); // 'Hello, Alice!'
+      
+      // 구조 분해 할당
+      const point = { x: 10, y: 20 };
+      const { x, y } = point;
+      console.log(x, y); // 10 20`,
+          },
+        ],
+      }      
     // { id: 9, title: "Project Ideas", content: "Blog platform with comments", depth: 0 },
 
     // { id: 10, title: "Learning Resources", content: "Various React learning resources", depth: 0 },
