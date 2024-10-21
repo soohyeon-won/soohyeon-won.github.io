@@ -1,6 +1,8 @@
 // src/TopicDetail.tsx
 import React from 'react';
 import '../styles/TopicDetail.css';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // 섹션의 타입 정의
 interface Section {
@@ -15,6 +17,7 @@ interface TopicDetailProps {
   sections: Section[];
 }
 
+
 const TopicDetail: React.FC<TopicDetailProps> = ({ title, sections }) => {
   return (
     <div className="detail-container">
@@ -23,7 +26,9 @@ const TopicDetail: React.FC<TopicDetailProps> = ({ title, sections }) => {
         <section className="feature-section" key={index}>
           <h2>{section.title}</h2>
           <p>{section.content}</p>
-          <pre><code>{section.code}</code></pre>
+          <SyntaxHighlighter language="javascript" style={docco}>
+            {section.code}
+          </SyntaxHighlighter>
         </section>
       ))}
     </div>
