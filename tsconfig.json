@@ -8,7 +8,7 @@
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "react-syntax-highlighter.d.ts"],
     "exclude": ["node_modules"]
   }
   
