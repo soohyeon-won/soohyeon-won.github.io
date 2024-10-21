@@ -20,24 +20,60 @@ export const topics: Topic[] = [
         title: "ES6+ features (arrow functions, destructuring, modules)",
         sections: [
             {
-                title: "Arrow Functions",
-                content: "Arrow functions provide a more concise syntax for writing functions and have a different behavior for `this` binding.",
+                title: "Arrow Function(화살표 함수)",
+                content: "화살표 함수는 함수 작성에 더 간결한 문법을 제공하며, this 바인딩에 대해 다른 동작을 가집니다.",
                 code: `const sum = (a, b) => a + b;`,
             },
             {
-                title: "Destructuring",
-                content: "Destructuring allows easy extraction of values from arrays or properties from objects.",
+                title: "Destructuring(구조 분해 할당)",
+                content: "구조 분해 할당은 배열에서 값이나 객체에서 속성을 쉽게 추출할 수 있도록 해줍니다.",
                 code: `const [a, b] = [1, 2];\nconst {name, age} = {name: 'Alice', age: 25};`,
             },
             {
                 title: "Modules",
-                content: "Modules allow splitting code into reusable pieces with import and export statements.",
+                content: "모듈은 코드를 재사용 가능한 조각으로 나누고, import와 export 구문을 통해 가져오고 내보낼 수 있게 해줍니다.",
                 code: `export const sum = (a, b) => a + b;\nimport { sum } from './math.js';`,
             },
         ],
         depth: 1,
     },
-    { id: "1.2", title: "Asynchronous JavaScript (Promises, async/await)", content: "Detailed content about Asynchronous JavaScript", depth: 1 },
+    {
+        id: "1.2",
+        title: "Asynchronous JavaScript (Promises, async/await)",
+        sections: [
+            {
+                title: "Promises(프로미스)",
+                content: "프로미스는 비동기 작업이 완료된 후의 결과 값을 나타내는 객체로, 성공(resolved) 또는 실패(rejected) 상태를 가집니다.",
+                code: `const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('Success!');
+      }, 1000);
+    });
+    
+    promise.then(result => {
+      console.log(result); // 'Success!' 출력
+    }).catch(error => {
+      console.error(error);
+    });`,
+            },
+            {
+                title: "async/await",
+                content: "`async/await`는 비동기 코드를 작성하는 더 직관적인 방법을 제공하며, 프로미스를 보다 읽기 쉽게 다룰 수 있습니다.",
+                code: `const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    
+    fetchData();`,
+            },
+        ],
+        depth: 1,
+    },    
     { id: "1.3", title: "Functional programming concepts", content: "Detailed content about Functional programming concepts", depth: 1 },
 
     { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
