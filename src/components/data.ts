@@ -74,7 +74,76 @@ export const topics: Topic[] = [
         ],
         depth: 1,
     },    
-    { id: "1.3", title: "Functional programming concepts", content: "Detailed content about Functional programming concepts", depth: 1 },
+    {
+        id: "1.3",
+        title: "Functional programming concepts (함수형 프로그래밍 개념)",
+        content: "함수형 프로그래밍은 상태 변이를 피하고 순수 함수를 사용하는 것을 기본 원칙으로 합니다. 이를 통해 코드의 예측 가능성과 가독성을 높일 수 있습니다.",
+        depth: 1,
+        sections: [
+          {
+            title: "Pure Functions (순수 함수)",
+            content: "순수 함수는 외부 상태를 변경하지 않으며, 동일한 입력에 대해 항상 동일한 출력을 반환하는 함수입니다. 부작용이 없기 때문에 예측 가능한 코드를 작성하는 데 유용합니다.",
+            code: `// 순수 함수 예시
+      const add = (a, b) => a + b;
+      
+      console.log(add(2, 3)); // 5
+      console.log(add(2, 3)); // 5 (항상 같은 입력에 대해 같은 출력)`,
+          },
+          {
+            title: "Immutability (불변성)",
+            content: "불변성은 데이터의 상태를 직접 변경하지 않고, 데이터를 복사하여 새로운 값을 만들어내는 것을 의미합니다. 이를 통해 상태 관리가 쉬워지고 버그 발생 가능성이 줄어듭니다.",
+            code: `// 불변성 예시 (배열 복사)
+      const numbers = [1, 2, 3];
+      const newNumbers = [...numbers, 4]; // 기존 배열을 변경하지 않고 새로운 배열 생성
+      console.log(numbers); // [1, 2, 3]
+      console.log(newNumbers); // [1, 2, 3, 4]`,
+          },
+          {
+            title: "Higher-Order Functions (고차 함수)",
+            content: "고차 함수는 함수를 인자로 받거나 함수를 반환하는 함수입니다. 이는 함수형 프로그래밍의 중요한 특징 중 하나로, 코드를 재사용하고 모듈화하는 데 도움을 줍니다.",
+            code: `// 고차 함수 예시
+      const applyOperation = (a, b, operation) => operation(a, b);
+      
+      const multiply = (a, b) => a * b;
+      console.log(applyOperation(5, 3, multiply)); // 15`,
+          },
+          {
+            title: "First-Class Functions (일급 함수)",
+            content: "자바스크립트에서는 함수가 일급 시민(First-Class Citizen)입니다. 이는 함수를 변수에 할당하거나, 다른 함수의 인자로 전달하거나, 반환할 수 있음을 의미합니다.",
+            code: `// 일급 함수 예시
+      const sayHello = () => 'Hello';
+      const greet = sayHello; // 함수를 변수에 할당
+      console.log(greet()); // 'Hello'`,
+          },
+          {
+            title: "Recursion (재귀)",
+            content: "재귀는 함수가 자기 자신을 호출하는 방식입니다. 재귀는 반복문 대신 사용되기도 하며, 특히 재귀적 데이터 구조를 처리할 때 유용합니다.",
+            code: `// 재귀 함수 예시 (팩토리얼 계산)
+      const factorial = (n) => {
+        if (n === 1) return 1;
+        return n * factorial(n - 1);
+      };
+      
+      console.log(factorial(5)); // 120`,
+          },
+          {
+            title: "Map, Filter, Reduce (맵, 필터, 리듀스)",
+            content: "함수형 프로그래밍에서 자주 사용하는 배열 메서드입니다. 각 메서드는 배열을 순회하면서 새로운 배열이나 값을 반환하는 역할을 합니다.",
+            code: `// map: 배열의 각 요소를 변환하여 새로운 배열 반환
+      const numbers = [1, 2, 3];
+      const doubled = numbers.map(n => n * 2);
+      console.log(doubled); // [2, 4, 6]
+      
+      // filter: 조건에 맞는 요소만 추출하여 새로운 배열 반환
+      const evenNumbers = numbers.filter(n => n % 2 === 0);
+      console.log(evenNumbers); // [2]
+      
+      // reduce: 배열을 하나의 값으로 합침
+      const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+      console.log(sum); // 6`,
+          },
+        ],
+      },      
 
     { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
     { id: "2.1", title: "JSX syntax", content: "Detailed content about JSX syntax", depth: 1 },
