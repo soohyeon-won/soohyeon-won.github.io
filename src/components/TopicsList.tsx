@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { topics } from "./data"; // data.ts에서 topics 가져오기
 import "../styles/TopicsList.css";
+import { Helmet } from 'react-helmet';
 
 const TopicsList: React.FC = () => {
     return (
