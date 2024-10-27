@@ -9,6 +9,11 @@ const TopicsList: React.FC = () => {
     return (
         <div className="container">
             <h1 className="title">React Study</h1>
+            <Helmet>
+        <title>React Study</title>
+        <meta name="description" content="soohyeon-won react study" />
+        <meta name="keywords" content="react, soohyeon-won, study" />
+        </Helmet>
             <ul className="list">
                 {topics.map((topic) => (
                     <li key={topic.id} className="list-item">
