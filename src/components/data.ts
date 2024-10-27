@@ -74,20 +74,330 @@ export const topics: Topic[] = [
         ],
         depth: 1,
     },    
-    { id: "1.3", title: "Functional programming concepts", content: "Detailed content about Functional programming concepts", depth: 1 },
-
-    { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
-    { id: "2.1", title: "JSX syntax", content: "Detailed content about JSX syntax", depth: 1 },
-    { id: "2.2", title: "Components and props", content: "Detailed content about Components and props", depth: 1 },
-    { id: "2.3", title: "State and lifecycle", content: "Detailed content about State and lifecycle", depth: 1 },
-    { id: "2.4", title: "Handling events", content: "Detailed content about Handling events", depth: 1 },
-    { id: "2.5", title: "Lists and keys", content: "Detailed content about Lists and keys", depth: 1 },
-
+    {
+        id: "1.3",
+        title: "Functional programming concepts (함수형 프로그래밍 개념)",
+        content: "함수형 프로그래밍은 상태 변이를 피하고 순수 함수를 사용하는 것을 기본 원칙으로 합니다. 이를 통해 코드의 예측 가능성과 가독성을 높일 수 있습니다.",
+        depth: 1,
+        sections: [
+          {
+            title: "Pure Functions (순수 함수)",
+            content: "순수 함수는 외부 상태를 변경하지 않으며, 동일한 입력에 대해 항상 동일한 출력을 반환하는 함수입니다. 부작용이 없기 때문에 예측 가능한 코드를 작성하는 데 유용합니다.",
+            code: `// 순수 함수 예시
+      const add = (a, b) => a + b;
+      
+      console.log(add(2, 3)); // 5
+      console.log(add(2, 3)); // 5 (항상 같은 입력에 대해 같은 출력)`,
+          },
+          {
+            title: "Immutability (불변성)",
+            content: "불변성은 데이터의 상태를 직접 변경하지 않고, 데이터를 복사하여 새로운 값을 만들어내는 것을 의미합니다. 이를 통해 상태 관리가 쉬워지고 버그 발생 가능성이 줄어듭니다.",
+            code: `// 불변성 예시 (배열 복사)
+      const numbers = [1, 2, 3];
+      const newNumbers = [...numbers, 4]; // 기존 배열을 변경하지 않고 새로운 배열 생성
+      console.log(numbers); // [1, 2, 3]
+      console.log(newNumbers); // [1, 2, 3, 4]`,
+          },
+          {
+            title: "Higher-Order Functions (고차 함수)",
+            content: "고차 함수는 함수를 인자로 받거나 함수를 반환하는 함수입니다. 이는 함수형 프로그래밍의 중요한 특징 중 하나로, 코드를 재사용하고 모듈화하는 데 도움을 줍니다.",
+            code: `// 고차 함수 예시
+      const applyOperation = (a, b, operation) => operation(a, b);
+      
+      const multiply = (a, b) => a * b;
+      console.log(applyOperation(5, 3, multiply)); // 15`,
+          },
+          {
+            title: "First-Class Functions (일급 함수)",
+            content: "자바스크립트에서는 함수가 일급 시민(First-Class Citizen)입니다. 이는 함수를 변수에 할당하거나, 다른 함수의 인자로 전달하거나, 반환할 수 있음을 의미합니다.",
+            code: `// 일급 함수 예시
+      const sayHello = () => 'Hello';
+      const greet = sayHello; // 함수를 변수에 할당
+      console.log(greet()); // 'Hello'`,
+          },
+          {
+            title: "Recursion (재귀)",
+            content: "재귀는 함수가 자기 자신을 호출하는 방식입니다. 재귀는 반복문 대신 사용되기도 하며, 특히 재귀적 데이터 구조를 처리할 때 유용합니다.",
+            code: `// 재귀 함수 예시 (팩토리얼 계산)
+      const factorial = (n) => {
+        if (n === 1) return 1;
+        return n * factorial(n - 1);
+      };
+      
+      console.log(factorial(5)); // 120`,
+          },
+          {
+            title: "Map, Filter, Reduce (맵, 필터, 리듀스)",
+            content: "함수형 프로그래밍에서 자주 사용하는 배열 메서드입니다. 각 메서드는 배열을 순회하면서 새로운 배열이나 값을 반환하는 역할을 합니다.",
+            code: `// map: 배열의 각 요소를 변환하여 새로운 배열 반환
+      const numbers = [1, 2, 3];
+      const doubled = numbers.map(n => n * 2);
+      console.log(doubled); // [2, 4, 6]
+      
+      // filter: 조건에 맞는 요소만 추출하여 새로운 배열 반환
+      const evenNumbers = numbers.filter(n => n % 2 === 0);
+      console.log(evenNumbers); // [2]
+      
+      // reduce: 배열을 하나의 값으로 합침
+      const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+      console.log(sum); // 6`,
+          },
+        ],
+      },      
+      { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
+    {
+        id: "2.1",
+        title: "JSX syntax",
+        content: "JSX는 JavaScript와 HTML을 결합하여 사용할 수 있는 문법입니다. React 컴포넌트에서 HTML을 렌더링할 때 사용됩니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "JSX Basics",
+                content: "JSX는 JavaScript의 확장 문법으로, HTML처럼 보이지만 JavaScript 코드로 변환됩니다.",
+                code: `const element = <h1>Hello, world!</h1>;`,
+            },
+            {
+                title: "Embedding Expressions in JSX",
+                content: "중괄호 `{}`를 사용해 JSX 내부에 JavaScript 표현식을 삽입할 수 있습니다.",
+                code: `const name = 'Alice';\nconst element = <h1>Hello, {name}!</h1>;`,
+            },
+        ],
+    },
+    {
+        id: "2.2",
+        title: "Components and props",
+        content: "컴포넌트는 React의 기본 구성 요소입니다. props는 부모 컴포넌트에서 자식 컴포넌트로 전달되는 데이터입니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "Functional and Class Components",
+                content: "컴포넌트는 함수형 컴포넌트와 클래스형 컴포넌트로 나눌 수 있습니다. 함수형 컴포넌트는 함수 형태로 정의되며 주로 사용됩니다.",
+                code: `function Welcome(props) {\n  return <h1>Hello, {props.name}</h1>;\n}\n\nclass Welcome extends React.Component {\n  render() {\n    return <h1>Hello, {this.props.name}</h1>;\n  }\n}`,
+            },
+            {
+                title: "Props",
+                content: "props는 컴포넌트에 전달되어 데이터를 교환하는 데 사용됩니다.",
+                code: `<Welcome name="Alice" /> // 'Hello, Alice' 출력`,
+            },
+        ],
+    },
+    {
+        id: "2.3",
+        title: "State and lifecycle",
+        content: "State는 컴포넌트의 상태를 나타내며, 컴포넌트 내에서 변경될 수 있습니다. Lifecycle 메서드는 컴포넌트의 생명주기를 제어합니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "State in Class Components",
+                content: "State는 컴포넌트 내에서 변경 가능한 값으로, `setState` 메서드로 값을 업데이트할 수 있습니다.",
+                code: `class Counter extends React.Component {\n  state = { count: 0 };\n\n  increment = () => {\n    this.setState({ count: this.state.count + 1 });\n  };\n\n  render() {\n    return <button onClick={this.increment}>{this.state.count}</button>;\n  }\n}`,
+            },
+            {
+                title: "Lifecycle Methods",
+                content: "컴포넌트 생명주기는 `componentDidMount`, `componentDidUpdate`, `componentWillUnmount` 등의 메서드를 포함합니다.",
+                code: `class Timer extends React.Component {\n  componentDidMount() {\n    this.timerID = setInterval(() => this.tick(), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.timerID);\n  }\n\n  tick() {\n    this.setState({ time: new Date() });\n  }\n\n  render() {\n    return <div>{this.state.time.toLocaleTimeString()}</div>;\n  }\n}`,
+            },
+        ],
+    },
+    {
+        id: "2.4",
+        title: "Handling events",
+        content: "React에서 이벤트를 처리하는 방법에 대해 학습합니다. JSX에서 이벤트는 camelCase로 작성되며, 함수 참조를 통해 전달됩니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "Event Handling",
+                content: "이벤트 핸들러는 JSX에서 `{}`를 사용해 전달할 수 있으며, 함수 참조를 통해 전달됩니다.",
+                code: `<button onClick={handleClick}>Click me</button>`,
+            },
+            {
+                title: "Passing Arguments to Event Handlers",
+                content: "이벤트 핸들러에 인수를 전달하려면 람다 함수를 사용할 수 있습니다.",
+                code: `<button onClick={() => this.handleClick(id)}>Click me</button>`,
+            },
+        ],
+    },
+    {
+        id: "2.5",
+        title: "Lists and keys",
+        content: "리스트는 JavaScript의 map 메서드를 사용해 렌더링할 수 있으며, 각 항목에는 고유한 키를 부여해야 합니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "Rendering Lists",
+                content: "map 함수를 사용해 리스트를 렌더링할 수 있습니다.",
+                code: `const listItems = numbers.map((number) =>\n  <li key={number.toString()}>{number}</li>\n);`,
+            },
+            {
+                title: "Keys",
+                content: "리스트 항목에 고유한 키를 추가하여 리액트가 항목을 식별하고 최적화할 수 있게 합니다.",
+                code: `<ul>{listItems}</ul>`,
+            },
+        ],
+    },
     { id: "3", title: "React Hooks", content: "Detailed content about React Hooks", depth: 0 },
-    { id: "3.1", title: "useState and useEffect", content: "Detailed content about useState and useEffect", depth: 1 },
-    { id: "3.2", title: "Custom hooks", content: "Detailed content about Custom hooks", depth: 1 },
-    { id: "3.3", title: "Context API with useContext", content: "Detailed content about Context API with useContext", depth: 1 },
+    {
+      id: "3.1",
+      title: "useState and useEffect",
+      content: "`useState`와 `useEffect`는 리액트의 기본 훅으로, 각각 컴포넌트의 상태를 관리하고 생명주기 이벤트를 다룰 수 있게 합니다.",
+      depth: 1,
+      sections: [
+          {
+              title: "useState",
+              content: "`useState` 훅은 컴포넌트 상태를 선언하고, 이를 변경할 수 있는 함수를 제공하여 상태를 관리할 수 있습니다.",
+              code: `import React, { useState } from 'react';
 
+function Counter() {
+const [count, setCount] = useState(0);
+
+const increment = () => setCount(count + 1);
+
+return (
+  <div>
+    <p>Current Count: {count}</p>
+    <button onClick={increment}>Increment</button>
+  </div>
+);
+}
+
+export default Counter;`,
+          },
+          {
+              title: "useEffect",
+              content: "`useEffect` 훅은 컴포넌트가 마운트되거나 업데이트될 때 특정 작업을 수행하도록 합니다. 두 번째 인자로 전달되는 의존성 배열을 통해 실행 타이밍을 조정할 수 있습니다.",
+              code: `import React, { useState, useEffect } from 'react';
+
+function Timer() {
+const [seconds, setSeconds] = useState(0);
+
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    setSeconds(prev => prev + 1);
+  }, 1000);
+
+  // 컴포넌트 언마운트 시 타이머 정리
+  return () => clearInterval(intervalId);
+}, []);
+
+return <div>Elapsed Time: {seconds} seconds</div>;
+}
+
+export default Timer;`,
+          },
+      ],
+  },
+  {
+      id: "3.2",
+      title: "Custom hooks",
+      content: "커스텀 훅은 재사용할 수 있는 로직을 추상화하여, 다양한 컴포넌트에서 동일한 로직을 간편하게 사용할 수 있게 합니다. 모든 커스텀 훅은 `use`로 시작하는 함수 형태입니다.",
+      depth: 1,
+      sections: [
+          {
+              title: "Creating a Custom Hook",
+              content: "커스텀 훅을 통해 특정 로직을 여러 컴포넌트에서 재사용할 수 있습니다. 예를 들어, 브라우저의 창 크기를 추적하는 훅을 만들어보겠습니다.",
+              code: `import { useState, useEffect } from 'react';
+
+function useWindowSize() {
+const [windowSize, setWindowSize] = useState({
+  width: window.innerWidth,
+  height: window.innerHeight,
+});
+
+useEffect(() => {
+  const handleResize = () => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
+return windowSize;
+}
+
+// 사용 예시
+import React from 'react';
+import useWindowSize from './useWindowSize';
+
+function App() {
+const { width, height } = useWindowSize();
+
+return (
+  <div>
+    <h1>Window Size</h1>
+    <p>Width: {width}px, Height: {height}px</p>
+  </div>
+);
+}
+
+export default App;`,
+          },
+      ],
+  },
+  {
+      id: "3.3",
+      title: "Context API with useContext",
+      content: "Context API와 `useContext` 훅을 사용하면 컴포넌트 트리 전체에 데이터를 쉽게 전달할 수 있습니다. 이 방법은 props 드릴링을 방지하고 상태를 최상위에서 하위 컴포넌트로 직접 전달할 수 있게 해줍니다.",
+      depth: 1,
+      sections: [
+          {
+              title: "Using Context API with useContext",
+              content: "`useContext` 훅과 Context API를 함께 사용하여 여러 컴포넌트에서 전역 상태를 공유할 수 있습니다. 예를 들어, 테마(Context)를 통해 컴포넌트의 스타일을 변경할 수 있습니다.",
+              code: `import React, { createContext, useContext, useState } from 'react';
+
+// 1. Context 생성
+const ThemeContext = createContext();
+
+function ThemeProvider({ children }) {
+const [theme, setTheme] = useState('light');
+
+const toggleTheme = () => {
+  setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+};
+
+return (
+  <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    {children}
+  </ThemeContext.Provider>
+);
+}
+
+// 2. Context 사용
+function ThemeButton() {
+const { theme, toggleTheme } = useContext(ThemeContext);
+
+return (
+  <button
+    onClick={toggleTheme}
+    style={{
+      backgroundColor: theme === 'light' ? '#fff' : '#333',
+      color: theme === 'light' ? '#000' : '#fff',
+    }}
+  >
+    Toggle Theme
+  </button>
+);
+}
+
+function App() {
+return (
+  <ThemeProvider>
+    <div>
+      <h1>Context API and useContext Example</h1>
+      <ThemeButton />
+    </div>
+  </ThemeProvider>
+);
+}
+
+export default App;`,
+          },
+      ],
+  },
     { id: "4", title: "State Management", content: "Detailed content about State Management", depth: 0 },
     { id: "4.1", title: "Redux basics", content: "Detailed content about Redux basics", depth: 1 },
     { id: "4.2", title: "React Redux hooks", content: "Detailed content about React Redux hooks", depth: 1 },
