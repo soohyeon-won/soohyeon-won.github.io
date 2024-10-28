@@ -1,8 +1,9 @@
 // src/data.ts
+// option + shift + f : 정렬
 export interface Section {
     title: string;
     content: string;
-    code: string;
+    code: string; // 인터페이스에 기본값을 정의하진 못해 code?: String 선택성 속성 이용 가능
 }
 
 export interface Topic {
@@ -73,63 +74,70 @@ export const topics: Topic[] = [
             },
         ],
         depth: 1,
-    },    
+    },
     {
         id: "1.3",
         title: "Functional programming concepts (함수형 프로그래밍 개념)",
-        content: "함수형 프로그래밍은 상태 변이를 피하고 순수 함수를 사용하는 것을 기본 원칙으로 합니다. 이를 통해 코드의 예측 가능성과 가독성을 높일 수 있습니다.",
+        content:
+            "함수형 프로그래밍은 상태 변이를 피하고 순수 함수를 사용하는 것을 기본 원칙으로 합니다. 이를 통해 코드의 예측 가능성과 가독성을 높일 수 있습니다.",
         depth: 1,
         sections: [
-          {
-            title: "Pure Functions (순수 함수)",
-            content: "순수 함수는 외부 상태를 변경하지 않으며, 동일한 입력에 대해 항상 동일한 출력을 반환하는 함수입니다. 부작용이 없기 때문에 예측 가능한 코드를 작성하는 데 유용합니다.",
-            code: `// 순수 함수 예시
+            {
+                title: "Pure Functions (순수 함수)",
+                content:
+                    "순수 함수는 외부 상태를 변경하지 않으며, 동일한 입력에 대해 항상 동일한 출력을 반환하는 함수입니다. 부작용이 없기 때문에 예측 가능한 코드를 작성하는 데 유용합니다.",
+                code: `// 순수 함수 예시
       const add = (a, b) => a + b;
       
       console.log(add(2, 3)); // 5
       console.log(add(2, 3)); // 5 (항상 같은 입력에 대해 같은 출력)`,
-          },
-          {
-            title: "Immutability (불변성)",
-            content: "불변성은 데이터의 상태를 직접 변경하지 않고, 데이터를 복사하여 새로운 값을 만들어내는 것을 의미합니다. 이를 통해 상태 관리가 쉬워지고 버그 발생 가능성이 줄어듭니다.",
-            code: `// 불변성 예시 (배열 복사)
+            },
+            {
+                title: "Immutability (불변성)",
+                content:
+                    "불변성은 데이터의 상태를 직접 변경하지 않고, 데이터를 복사하여 새로운 값을 만들어내는 것을 의미합니다. 이를 통해 상태 관리가 쉬워지고 버그 발생 가능성이 줄어듭니다.",
+                code: `// 불변성 예시 (배열 복사)
       const numbers = [1, 2, 3];
       const newNumbers = [...numbers, 4]; // 기존 배열을 변경하지 않고 새로운 배열 생성
       console.log(numbers); // [1, 2, 3]
       console.log(newNumbers); // [1, 2, 3, 4]`,
-          },
-          {
-            title: "Higher-Order Functions (고차 함수)",
-            content: "고차 함수는 함수를 인자로 받거나 함수를 반환하는 함수입니다. 이는 함수형 프로그래밍의 중요한 특징 중 하나로, 코드를 재사용하고 모듈화하는 데 도움을 줍니다.",
-            code: `// 고차 함수 예시
+            },
+            {
+                title: "Higher-Order Functions (고차 함수)",
+                content:
+                    "고차 함수는 함수를 인자로 받거나 함수를 반환하는 함수입니다. 이는 함수형 프로그래밍의 중요한 특징 중 하나로, 코드를 재사용하고 모듈화하는 데 도움을 줍니다.",
+                code: `// 고차 함수 예시
       const applyOperation = (a, b, operation) => operation(a, b);
       
       const multiply = (a, b) => a * b;
       console.log(applyOperation(5, 3, multiply)); // 15`,
-          },
-          {
-            title: "First-Class Functions (일급 함수)",
-            content: "자바스크립트에서는 함수가 일급 시민(First-Class Citizen)입니다. 이는 함수를 변수에 할당하거나, 다른 함수의 인자로 전달하거나, 반환할 수 있음을 의미합니다.",
-            code: `// 일급 함수 예시
+            },
+            {
+                title: "First-Class Functions (일급 함수)",
+                content:
+                    "자바스크립트에서는 함수가 일급 시민(First-Class Citizen)입니다. 이는 함수를 변수에 할당하거나, 다른 함수의 인자로 전달하거나, 반환할 수 있음을 의미합니다.",
+                code: `// 일급 함수 예시
       const sayHello = () => 'Hello';
       const greet = sayHello; // 함수를 변수에 할당
       console.log(greet()); // 'Hello'`,
-          },
-          {
-            title: "Recursion (재귀)",
-            content: "재귀는 함수가 자기 자신을 호출하는 방식입니다. 재귀는 반복문 대신 사용되기도 하며, 특히 재귀적 데이터 구조를 처리할 때 유용합니다.",
-            code: `// 재귀 함수 예시 (팩토리얼 계산)
+            },
+            {
+                title: "Recursion (재귀)",
+                content:
+                    "재귀는 함수가 자기 자신을 호출하는 방식입니다. 재귀는 반복문 대신 사용되기도 하며, 특히 재귀적 데이터 구조를 처리할 때 유용합니다.",
+                code: `// 재귀 함수 예시 (팩토리얼 계산)
       const factorial = (n) => {
         if (n === 1) return 1;
         return n * factorial(n - 1);
       };
       
       console.log(factorial(5)); // 120`,
-          },
-          {
-            title: "Map, Filter, Reduce (맵, 필터, 리듀스)",
-            content: "함수형 프로그래밍에서 자주 사용하는 배열 메서드입니다. 각 메서드는 배열을 순회하면서 새로운 배열이나 값을 반환하는 역할을 합니다.",
-            code: `// map: 배열의 각 요소를 변환하여 새로운 배열 반환
+            },
+            {
+                title: "Map, Filter, Reduce (맵, 필터, 리듀스)",
+                content:
+                    "함수형 프로그래밍에서 자주 사용하는 배열 메서드입니다. 각 메서드는 배열을 순회하면서 새로운 배열이나 값을 반환하는 역할을 합니다.",
+                code: `// map: 배열의 각 요소를 변환하여 새로운 배열 반환
       const numbers = [1, 2, 3];
       const doubled = numbers.map(n => n * 2);
       console.log(doubled); // [2, 4, 6]
@@ -141,10 +149,10 @@ export const topics: Topic[] = [
       // reduce: 배열을 하나의 값으로 합침
       const sum = numbers.reduce((acc, curr) => acc + curr, 0);
       console.log(sum); // 6`,
-          },
+            },
         ],
-      },      
-      { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
+    },
+    { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
     {
         id: "2.1",
         title: "JSX syntax",
@@ -170,14 +178,30 @@ export const topics: Topic[] = [
         depth: 1,
         sections: [
             {
-                title: "Functional and Class Components",
+                title: "React란?",
+                content:
+                    "React는 웹사이트를 만들 때 사용하는 도구예요. 마치 레고 블록처럼 작은 부품들(이걸 '컴포넌트'라고 해요)을 조립해서 웹사이트를 만듭니다.",
+                code: ``,
+            },
+            {
+                title: "컴포넌트란?",
                 content: "컴포넌트는 함수형 컴포넌트와 클래스형 컴포넌트로 나눌 수 있습니다. 함수형 컴포넌트는 함수 형태로 정의되며 주로 사용됩니다.",
-                code: `function Welcome(props) {\n  return <h1>Hello, {props.name}</h1>;\n}\n\nclass Welcome extends React.Component {\n  render() {\n    return <h1>Hello, {this.props.name}</h1>;\n  }\n}`,
+                code: `// 간단한 인사말 컴포넌트\nfunction 인사말() {\nreturn <h1>안녕하세요!</h1>;\n}\n\n// 사용할 때는 이렇게 씁니다\n<인사말 />  // 화면에 "안녕하세요!" 가 표시됩니다`,
             },
             {
                 title: "Props",
-                content: "props는 컴포넌트에 전달되어 데이터를 교환하는 데 사용됩니다.",
+                content: "Props는 컴포넌트에 정보를 전달할 때 사용합니다. 데이터를 교환하는 데 사용됩니다.",
                 code: `<Welcome name="Alice" /> // 'Hello, Alice' 출력`,
+            },
+            {
+                title: "Functional and Class Components",
+                content: "컴포넌트는 함수형 컴포넌트와 클래스형 컴포넌트로 나눌 수 있습니다. 함수형 컴포넌트는 함수 형태로 정의되며 주로 사용됩니다.",
+                code: `//함수형 컴포넌트 (새로운 방식, 더 많이 사용됨)\nfunction Welcome(props) {\n  return <h1>Hello, {props.name}</h1>;\n}\n\n//클래스형 컴포넌트 (예전 방식)\nclass Welcome extends React.Component {\n  render() {\n    return <h1>Hello, {this.props.name}</h1>;\n  }\n}`,
+            },
+            {
+                title: "함수형 컴포넌트를 더 많이 쓰는 이유는?",
+                content: "- 코드가 더 간단하고 읽기 쉬워요\n- Hooks라는 편리한 기능을 사용할 수 있어요\n- 성능이 더 좋아요\n- 테스트하기가 더 쉬워요",
+                code: "",
             },
         ],
     },
@@ -237,15 +261,15 @@ export const topics: Topic[] = [
     },
     { id: "3", title: "React Hooks", content: "Detailed content about React Hooks", depth: 0 },
     {
-      id: "3.1",
-      title: "useState and useEffect",
-      content: "`useState`와 `useEffect`는 리액트의 기본 훅으로, 각각 컴포넌트의 상태를 관리하고 생명주기 이벤트를 다룰 수 있게 합니다.",
-      depth: 1,
-      sections: [
-          {
-              title: "useState",
-              content: "`useState` 훅은 컴포넌트 상태를 선언하고, 이를 변경할 수 있는 함수를 제공하여 상태를 관리할 수 있습니다.",
-              code: `import React, { useState } from 'react';
+        id: "3.1",
+        title: "useState and useEffect",
+        content: "`useState`와 `useEffect`는 리액트의 기본 훅으로, 각각 컴포넌트의 상태를 관리하고 생명주기 이벤트를 다룰 수 있게 합니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "useState",
+                content: "`useState` 훅은 컴포넌트 상태를 선언하고, 이를 변경할 수 있는 함수를 제공하여 상태를 관리할 수 있습니다.",
+                code: `import React, { useState } from 'react';
 
 function Counter() {
 const [count, setCount] = useState(0);
@@ -261,11 +285,12 @@ return (
 }
 
 export default Counter;`,
-          },
-          {
-              title: "useEffect",
-              content: "`useEffect` 훅은 컴포넌트가 마운트되거나 업데이트될 때 특정 작업을 수행하도록 합니다. 두 번째 인자로 전달되는 의존성 배열을 통해 실행 타이밍을 조정할 수 있습니다.",
-              code: `import React, { useState, useEffect } from 'react';
+            },
+            {
+                title: "useEffect",
+                content:
+                    "`useEffect` 훅은 컴포넌트가 마운트되거나 업데이트될 때 특정 작업을 수행하도록 합니다. 두 번째 인자로 전달되는 의존성 배열을 통해 실행 타이밍을 조정할 수 있습니다.",
+                code: `import React, { useState, useEffect } from 'react';
 
 function Timer() {
 const [seconds, setSeconds] = useState(0);
@@ -283,19 +308,21 @@ return <div>Elapsed Time: {seconds} seconds</div>;
 }
 
 export default Timer;`,
-          },
-      ],
-  },
-  {
-      id: "3.2",
-      title: "Custom hooks",
-      content: "커스텀 훅은 재사용할 수 있는 로직을 추상화하여, 다양한 컴포넌트에서 동일한 로직을 간편하게 사용할 수 있게 합니다. 모든 커스텀 훅은 `use`로 시작하는 함수 형태입니다.",
-      depth: 1,
-      sections: [
-          {
-              title: "Creating a Custom Hook",
-              content: "커스텀 훅을 통해 특정 로직을 여러 컴포넌트에서 재사용할 수 있습니다. 예를 들어, 브라우저의 창 크기를 추적하는 훅을 만들어보겠습니다.",
-              code: `import { useState, useEffect } from 'react';
+            },
+        ],
+    },
+    {
+        id: "3.2",
+        title: "Custom hooks",
+        content:
+            "커스텀 훅은 재사용할 수 있는 로직을 추상화하여, 다양한 컴포넌트에서 동일한 로직을 간편하게 사용할 수 있게 합니다. 모든 커스텀 훅은 `use`로 시작하는 함수 형태입니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "Creating a Custom Hook",
+                content:
+                    "커스텀 훅을 통해 특정 로직을 여러 컴포넌트에서 재사용할 수 있습니다. 예를 들어, 브라우저의 창 크기를 추적하는 훅을 만들어보겠습니다.",
+                code: `import { useState, useEffect } from 'react';
 
 function useWindowSize() {
 const [windowSize, setWindowSize] = useState({
@@ -335,19 +362,21 @@ return (
 }
 
 export default App;`,
-          },
-      ],
-  },
-  {
-      id: "3.3",
-      title: "Context API with useContext",
-      content: "Context API와 `useContext` 훅을 사용하면 컴포넌트 트리 전체에 데이터를 쉽게 전달할 수 있습니다. 이 방법은 props 드릴링을 방지하고 상태를 최상위에서 하위 컴포넌트로 직접 전달할 수 있게 해줍니다.",
-      depth: 1,
-      sections: [
-          {
-              title: "Using Context API with useContext",
-              content: "`useContext` 훅과 Context API를 함께 사용하여 여러 컴포넌트에서 전역 상태를 공유할 수 있습니다. 예를 들어, 테마(Context)를 통해 컴포넌트의 스타일을 변경할 수 있습니다.",
-              code: `import React, { createContext, useContext, useState } from 'react';
+            },
+        ],
+    },
+    {
+        id: "3.3",
+        title: "Context API with useContext",
+        content:
+            "Context API와 `useContext` 훅을 사용하면 컴포넌트 트리 전체에 데이터를 쉽게 전달할 수 있습니다. 이 방법은 props 드릴링을 방지하고 상태를 최상위에서 하위 컴포넌트로 직접 전달할 수 있게 해줍니다.",
+        depth: 1,
+        sections: [
+            {
+                title: "Using Context API with useContext",
+                content:
+                    "`useContext` 훅과 Context API를 함께 사용하여 여러 컴포넌트에서 전역 상태를 공유할 수 있습니다. 예를 들어, 테마(Context)를 통해 컴포넌트의 스타일을 변경할 수 있습니다.",
+                code: `import React, { createContext, useContext, useState } from 'react';
 
 // 1. Context 생성
 const ThemeContext = createContext();
@@ -395,9 +424,9 @@ return (
 }
 
 export default App;`,
-          },
-      ],
-  },
+            },
+        ],
+    },
     { id: "4", title: "State Management", content: "Detailed content about State Management", depth: 0 },
     { id: "4.1", title: "Redux basics", content: "Detailed content about Redux basics", depth: 1 },
     { id: "4.2", title: "React Redux hooks", content: "Detailed content about React Redux hooks", depth: 1 },
@@ -409,7 +438,12 @@ export default App;`,
     { id: "6", title: "Testing", content: "Detailed content about Testing", depth: 0 },
     { id: "6.1", title: "Jest and React Testing Library", content: "Detailed content about Jest and React Testing Library", depth: 1 },
 
-    { id: "7", title: "Build Tools and Development Environment", content: "Detailed content about Build Tools and Development Environment", depth: 0 },
+    {
+        id: "7",
+        title: "Build Tools and Development Environment",
+        content: "Detailed content about Build Tools and Development Environment",
+        depth: 0,
+    },
     { id: "7.1", title: "Webpack or Create React App", content: "Detailed content about Webpack or Create React App", depth: 1 },
     { id: "7.2", title: "ESLint and Prettier", content: "Detailed content about ESLint and Prettier", depth: 1 },
 
@@ -426,18 +460,18 @@ export default App;`,
         content: "",
         depth: 1,
         sections: [
-          {
-            title: "Variables (변수)",
-            content: "자바스크립트에서 변수를 선언하는 방법과 변수의 종류에 대해 배웁니다.",
-            code: `// 변수 선언 예시
+            {
+                title: "Variables (변수)",
+                content: "자바스크립트에서 변수를 선언하는 방법과 변수의 종류에 대해 배웁니다.",
+                code: `// 변수 선언 예시
       let name = 'Alice'; // 변경 가능한 변수
       const age = 25; // 변경 불가능한 변수
       var city = 'Seoul'; // ES5의 변수 선언 (스코프에 주의)`,
-          },
-          {
-            title: "Data Types (데이터 타입)",
-            content: "자바스크립트에서 사용하는 다양한 데이터 타입을 이해합니다.",
-            code: `// 데이터 타입 예시
+            },
+            {
+                title: "Data Types (데이터 타입)",
+                content: "자바스크립트에서 사용하는 다양한 데이터 타입을 이해합니다.",
+                code: `// 데이터 타입 예시
       let num = 42; // Number
       let str = 'Hello'; // String
       let isActive = true; // Boolean
@@ -445,20 +479,20 @@ export default App;`,
       let arr = [1, 2, 3]; // Array
       let nothing = null; // Null
       let notDefined; // Undefined`,
-          },
-          {
-            title: "Operators (연산자)",
-            content: "자바스크립트에서 사용할 수 있는 다양한 연산자에 대해 배웁니다.",
-            code: `// 연산자 예시
+            },
+            {
+                title: "Operators (연산자)",
+                content: "자바스크립트에서 사용할 수 있는 다양한 연산자에 대해 배웁니다.",
+                code: `// 연산자 예시
       let sum = 5 + 3; // 덧셈
       let isEqual = (5 === 5); // 비교
       let increment = 1; 
       increment++; // 증가`,
-          },
-          {
-            title: "Control Structures (제어 구조)",
-            content: "조건문과 반복문을 사용하여 흐름을 제어하는 방법을 배웁니다.",
-            code: `// 조건문 예시
+            },
+            {
+                title: "Control Structures (제어 구조)",
+                content: "조건문과 반복문을 사용하여 흐름을 제어하는 방법을 배웁니다.",
+                code: `// 조건문 예시
       if (age >= 18) {
         console.log('성인입니다.');
       } else {
@@ -469,11 +503,11 @@ export default App;`,
       for (let i = 0; i < 5; i++) {
         console.log(i);
       }`,
-          },
-          {
-            title: "Functions (함수)",
-            content: "함수의 정의와 호출 방법, 매개변수 및 반환값을 이해합니다.",
-            code: `// 함수 선언 예시
+            },
+            {
+                title: "Functions (함수)",
+                content: "함수의 정의와 호출 방법, 매개변수 및 반환값을 이해합니다.",
+                code: `// 함수 선언 예시
       function greet(name) {
         return 'Hello, ' + name + '!';
       }
@@ -482,11 +516,11 @@ export default App;`,
       // 화살표 함수 예시
       const add = (a, b) => a + b;
       console.log(add(2, 3)); // 5`,
-          },
-          {
-            title: "Objects and Arrays (객체와 배열)",
-            content: "자바스크립트의 객체와 배열을 생성하고 사용하는 방법을 배웁니다.",
-            code: `// 객체 예시
+            },
+            {
+                title: "Objects and Arrays (객체와 배열)",
+                content: "자바스크립트의 객체와 배열을 생성하고 사용하는 방법을 배웁니다.",
+                code: `// 객체 예시
       let person = {
         name: 'Alice',
         age: 25,
@@ -499,11 +533,11 @@ export default App;`,
       // 배열 예시
       let fruits = ['apple', 'banana', 'orange'];
       console.log(fruits[0]); // 'apple'`,
-          },
-          {
-            title: "ES6 Features (ES6 기능)",
-            content: "ES6에서 도입된 주요 기능들에 대해 배웁니다.",
-            code: `// 템플릿 리터럴
+            },
+            {
+                title: "ES6 Features (ES6 기능)",
+                content: "ES6에서 도입된 주요 기능들에 대해 배웁니다.",
+                code: `// 템플릿 리터럴
       let name = 'Alice';
       console.log(\`Hello, \${name}!\`); // 'Hello, Alice!'
       
@@ -511,9 +545,9 @@ export default App;`,
       const point = { x: 10, y: 20 };
       const { x, y } = point;
       console.log(x, y); // 10 20`,
-          },
+            },
         ],
-      }      
+    },
     // { id: 9, title: "Project Ideas", content: "Blog platform with comments", depth: 0 },
 
     // { id: 10, title: "Learning Resources", content: "Various React learning resources", depth: 0 },
