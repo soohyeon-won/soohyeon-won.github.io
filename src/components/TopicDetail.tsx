@@ -25,10 +25,14 @@ const TopicDetail: React.FC<TopicDetailProps> = ({ title, sections }) => {
       {sections.map((section, index) => (
         <section className="feature-section" key={index}>
           <h2>{section.title}</h2>
-          <p>{section.content}</p>
-          <SyntaxHighlighter language="typescript" style={solarizedlight}>
-            {section.code}
-          </SyntaxHighlighter>
+          {section.content.split('\n').map((line, idx) => (
+            <p key={idx}>{line}</p>
+          ))}
+          {section.code && (  // section.code가 있을 때만 렌더링
+            <SyntaxHighlighter language="typescript" style={solarizedlight}>
+              {section.code}
+            </SyntaxHighlighter>
+          )}
         </section>
       ))}
     </div>
