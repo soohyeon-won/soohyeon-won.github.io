@@ -206,22 +206,36 @@ export const topics: Topic[] = [
         ],
     },
     {
-        id: "2.3",
-        title: "State and lifecycle",
-        content: "State는 컴포넌트의 상태를 나타내며, 컴포넌트 내에서 변경될 수 있습니다. Lifecycle 메서드는 컴포넌트의 생명주기를 제어합니다.",
+      "id": "2.3",
+      "title": "State와 Lifecycle",
+      "content": "React에서 'State'는 컴포넌트의 내부 데이터나 속성을 나타내며, 시간이 지남에 따라 변경될 수 있는 값입니다.\nState를 통해 컴포넌트는 동적이고 상호작용적인 사용자 인터페이스를 생성할 수 있습니다.\nState 값은 컴포넌트 내에서 특정 메서드를 통해 업데이트할 수 있으며, state가 변경되면 컴포넌트가 다시 렌더링됩니다.\n'Lifecycle 메서드'는 컴포넌트의 생명주기를 제어하는 메서드로,\n컴포넌트가 생성되고 업데이트되고 삭제되는 각각의 단계에서 특정 작업을 수행할 수 있도록 해줍니다.",
         depth: 1,
-        sections: [
-            {
-                title: "State in Class Components",
-                content: "State는 컴포넌트 내에서 변경 가능한 값으로, `setState` 메서드로 값을 업데이트할 수 있습니다.",
-                code: `class Counter extends React.Component {\n  state = { count: 0 };\n\n  increment = () => {\n    this.setState({ count: this.state.count + 1 });\n  };\n\n  render() {\n    return <button onClick={this.increment}>{this.state.count}</button>;\n  }\n}`,
-            },
-            {
-                title: "Lifecycle Methods",
-                content: "컴포넌트 생명주기는 `componentDidMount`, `componentDidUpdate`, `componentWillUnmount` 등의 메서드를 포함합니다.",
-                code: `class Timer extends React.Component {\n  componentDidMount() {\n    this.timerID = setInterval(() => this.tick(), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.timerID);\n  }\n\n  tick() {\n    this.setState({ time: new Date() });\n  }\n\n  render() {\n    return <div>{this.state.time.toLocaleTimeString()}</div>;\n  }\n}`,
-            },
-        ],
+        sections:[
+          {
+              "title": "State란 무엇인가?",
+              "content": "React에서 'State'는 컴포넌트의 현재 상태 또는 내부 데이터로, 컴포넌트 내에서 변할 수 있는 값을 저장합니다. 예를 들어, 사용자 입력을 추적하거나 UI 요소가 변경될 때마다 State를 사용하여 해당 정보를 저장하고 업데이트할 수 있습니다. 클래스 컴포넌트에서는 `this.state`로 접근하고, 값을 변경할 때는 `setState` 메서드를 사용합니다. State가 변경되면 React는 컴포넌트를 다시 렌더링하여 UI를 최신 상태로 유지합니다.",
+              "code": `class Counter extends React.Component {\n  state = { count: 0 };\n\n  increment = () => {\n    this.setState({ count: this.state.count + 1 });\n  };\n\n  render() {\n    return {this.state.count};\n  }\n}`
+          },
+          {
+              "title": "componentDidMount",
+              "content": "componentDidMount는 컴포넌트가 처음 화면에 렌더링된 직후에 호출됩니다. 이 메서드는 데이터 불러오기나 타이머 설정 등 초기화 작업을 수행하기에 적합합니다.",
+              "code": `class DataFetcher extends React.Component {\n  componentDidMount() {\n    fetch('https://api.example.com/data')\n      .then(response => response.json())\n      .then(data => this.setState({ data }));\n  }\n\n  render() {\n    return {this.state.data};\n  }\n}`
+          },
+          {
+              "title": "componentDidUpdate",
+              "content": "componentDidUpdate는 컴포넌트가 업데이트될 때마다 호출됩니다. 이 메서드는 props나 state가 변경된 후 추가 작업을 수행할 때 유용합니다.",
+              "code": `class ColorChanger extends React.Component {\n  componentDidUpdate(prevProps) {\n    if (prevProps.color !== this.props.color) {\n      console.log('Color updated:', this.props.color);\n    }\n  }\n\n  render() {\n    return 
+  
+  {this.props.color}
+  
+  ;\n  }\n}`
+          },
+          {
+              "title": "componentWillUnmount",
+              "content": "componentWillUnmount는 컴포넌트가 화면에서 제거되기 직전에 호출됩니다. 이 메서드는 타이머나 이벤트 리스너와 같은 리소스를 정리하여 메모리 누수를 방지하는 데 유용합니다.",
+              "code": `class Timer extends React.Component {\n  componentDidMount() {\n    this.timerID = setInterval(() => this.tick(), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.timerID);\n  }\n\n  tick() {\n    this.setState({ time: new Date() });\n  }\n\n  render() {\n    return {this.state.time.toLocaleTimeString()};\n  }\n}`
+          }
+      ],
     },
     {
         id: "2.4",
