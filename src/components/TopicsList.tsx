@@ -34,13 +34,11 @@ const TopicsList: React.FC = () => {
                 <h1 className="title">Practice Area</h1>
                 {/* 리스트 형식으로 컴포넌트 추가 */}
                 <div className="component-item">
-                    <div className="component-title">1. Life Cycle</div>
-                    <div className="component-description">
-                        <ComponentsLifecycle title={"1. Life cycle"} />
-                    </div>
+                    <h2>1. Life Cycle</h2>
+                    <ComponentsLifecycle />
                 </div>
                 <div className="component-item">
-                    <div className="component-title">2. Another Component</div>
+                    <div className="component-title">함수형 컴포넌트 vs 클래스 컴포넌트</div>
                     <div className="component-description">{/* 여기에 다른 컴포넌트 추가 */}</div>
                 </div>
                 <p>This is where you can develop and view your practice implementations.</p>
