@@ -1,32 +1,50 @@
 // src/TopicsList.tsx
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { topics } from "./data"; // data.ts에서 topics 가져오기
 import "../styles/TopicsList.css";
-import { Helmet } from 'react-helmet';
+import { topics } from "./data";
+import ComponentsLifecycle from "./practice/ComponentsLifecycle";
 
 const TopicsList: React.FC = () => {
     return (
-        <div className="container">
-            <h1 className="title">React Study</h1>
-            <Helmet>
-        <title>React Study</title>
-        <meta name="description" content="soohyeon-won react study" />
-        <meta name="keywords" content="react, soohyeon-won, study" />
-        </Helmet>
-            <ul className="list">
-                {topics.map((topic) => (
-                    <li key={topic.id} className="list-item">
-                        {topic.depth === 0 ? (
-                            <h2>
-                                {topic.id}. {topic.title}
-                            </h2>
-                        ) : (
-                            <Link to={`/topic/${topic.id}`}>- {topic.title}</Link>
-                        )}
-                    </li>
-                ))}
-            </ul>
+        <div className="content-wrapper">
+            <div className="left-panel">
+                <h1 className="title">React Study</h1>
+                <Helmet>
+                    <title>React Study</title>
+                    <meta name="description" content="soohyeon-won react study" />
+                    <meta name="keywords" content="react, soohyeon-won, study" />
+                </Helmet>
+                <ul className="list">
+                    {topics.map(topic => (
+                        <li key={topic.id} className="list-item">
+                            {topic.depth === 0 ? (
+                                <h2>
+                                    {topic.id}. {topic.title}
+                                </h2>
+                            ) : (
+                                <Link to={`/topic/${topic.id}`}>- {topic.title}</Link>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="right-panel">
+                <h1 className="title">Practice Area</h1>
+                {/* 리스트 형식으로 컴포넌트 추가 */}
+                <div className="component-item">
+                    <div className="component-title">1. Life Cycle</div>
+                    <div className="component-description">
+                        <ComponentsLifecycle title={"1. Life cycle"} />
+                    </div>
+                </div>
+                <div className="component-item">
+                    <div className="component-title">2. Another Component</div>
+                    <div className="component-description">{/* 여기에 다른 컴포넌트 추가 */}</div>
+                </div>
+                <p>This is where you can develop and view your practice implementations.</p>
+            </div>
         </div>
     );
 };
