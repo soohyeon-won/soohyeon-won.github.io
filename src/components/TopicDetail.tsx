@@ -19,6 +19,7 @@ interface TopicDetailProps {
 }
 
 const TopicDetail: React.FC<TopicDetailProps> = ({ title, sections }) => {
+  
   return (
     <div className="detail-container">
       <h1>{title}</h1>

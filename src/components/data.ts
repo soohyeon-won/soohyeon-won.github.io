@@ -206,36 +206,61 @@ export const topics: Topic[] = [
         ],
     },
     {
-      "id": "2.3",
-      "title": "State와 Lifecycle",
-      "content": "React에서 'State'는 컴포넌트의 내부 데이터나 속성을 나타내며, 시간이 지남에 따라 변경될 수 있는 값입니다.\nState를 통해 컴포넌트는 동적이고 상호작용적인 사용자 인터페이스를 생성할 수 있습니다.\nState 값은 컴포넌트 내에서 특정 메서드를 통해 업데이트할 수 있으며, state가 변경되면 컴포넌트가 다시 렌더링됩니다.\n'Lifecycle 메서드'는 컴포넌트의 생명주기를 제어하는 메서드로,\n컴포넌트가 생성되고 업데이트되고 삭제되는 각각의 단계에서 특정 작업을 수행할 수 있도록 해줍니다.",
+        id: "2.3",
+        title: "State와 Lifecycle",
+        content:
+            "React에서 'State'는 컴포넌트의 내부 데이터나 속성을 나타내며, 시간이 지남에 따라 변경될 수 있는 값입니다.\nState를 통해 컴포넌트는 동적이고 상호작용적인 사용자 인터페이스를 생성할 수 있습니다.\nState 값은 컴포넌트 내에서 특정 메서드를 통해 업데이트할 수 있으며, state가 변경되면 컴포넌트가 다시 렌더링됩니다.\n'Lifecycle 메서드'는 컴포넌트의 생명주기를 제어하는 메서드로,\n컴포넌트가 생성되고 업데이트되고 삭제되는 각각의 단계에서 특정 작업을 수행할 수 있도록 해줍니다.",
         depth: 1,
-        sections:[
-          {
-              "title": "State란 무엇인가?",
-              "content": "React에서 'State'는 컴포넌트의 현재 상태 또는 내부 데이터로, 컴포넌트 내에서 변할 수 있는 값을 저장합니다. 예를 들어, 사용자 입력을 추적하거나 UI 요소가 변경될 때마다 State를 사용하여 해당 정보를 저장하고 업데이트할 수 있습니다. 클래스 컴포넌트에서는 `this.state`로 접근하고, 값을 변경할 때는 `setState` 메서드를 사용합니다. State가 변경되면 React는 컴포넌트를 다시 렌더링하여 UI를 최신 상태로 유지합니다.",
-              "code": `class Counter extends React.Component {\n  state = { count: 0 };\n\n  increment = () => {\n    this.setState({ count: this.state.count + 1 });\n  };\n\n  render() {\n    return {this.state.count};\n  }\n}`
-          },
-          {
-              "title": "componentDidMount",
-              "content": "componentDidMount는 컴포넌트가 처음 화면에 렌더링된 직후에 호출됩니다. 이 메서드는 데이터 불러오기나 타이머 설정 등 초기화 작업을 수행하기에 적합합니다.",
-              "code": `class DataFetcher extends React.Component {\n  componentDidMount() {\n    fetch('https://api.example.com/data')\n      .then(response => response.json())\n      .then(data => this.setState({ data }));\n  }\n\n  render() {\n    return {this.state.data};\n  }\n}`
-          },
-          {
-              "title": "componentDidUpdate",
-              "content": "componentDidUpdate는 컴포넌트가 업데이트될 때마다 호출됩니다. 이 메서드는 props나 state가 변경된 후 추가 작업을 수행할 때 유용합니다.",
-              "code": `class ColorChanger extends React.Component {\n  componentDidUpdate(prevProps) {\n    if (prevProps.color !== this.props.color) {\n      console.log('Color updated:', this.props.color);\n    }\n  }\n\n  render() {\n    return 
-  
-  {this.props.color}
-  
-  ;\n  }\n}`
-          },
-          {
-              "title": "componentWillUnmount",
-              "content": "componentWillUnmount는 컴포넌트가 화면에서 제거되기 직전에 호출됩니다. 이 메서드는 타이머나 이벤트 리스너와 같은 리소스를 정리하여 메모리 누수를 방지하는 데 유용합니다.",
-              "code": `class Timer extends React.Component {\n  componentDidMount() {\n    this.timerID = setInterval(() => this.tick(), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.timerID);\n  }\n\n  tick() {\n    this.setState({ time: new Date() });\n  }\n\n  render() {\n    return {this.state.time.toLocaleTimeString()};\n  }\n}`
-          }
-      ],
+        sections: [
+            {
+                title: "State란 무엇인가?",
+                content:
+                    "React에서 'State'는 컴포넌트의 현재 상태 또는 내부 데이터로, 컴포넌트 내에서 변할 수 있는 값을 저장합니다. 예를 들어, 사용자 입력을 추적하거나 UI 요소가 변경될 때마다 State를 사용하여 해당 정보를 저장하고 업데이트할 수 있습니다. 클래스 컴포넌트에서는 `this.state`로 접근하고, 값을 변경할 때는 `setState` 메서드를 사용합니다. State가 변경되면 React는 컴포넌트를 다시 렌더링하여 UI를 최신 상태로 유지합니다.",
+                code: `class Counter extends React.Component {\n  state = { count: 0 };\n\n  increment = () => {\n    this.setState({ count: this.state.count + 1 });\n  };\n\n  render() {\n    return {this.state.count};\n  }\n}`,
+            },
+            {
+                title: "라이프사이클 메서드란?",
+                content:
+                    "React 컴포넌트는 생성부터 제거까지 일련의 단계들을 거치며, 이 과정에서 특정 작업을 수행할 수 있도록 하는 라이프사이클 메서드가 있습니다. 라이프사이클 메서드는 컴포넌트의 초기화, 업데이트, 제거 과정에서 각각 호출되며, 각 메서드는 다양한 상황에서 필요한 작업을 수행하기에 적합합니다.",
+                code: "",
+            },
+            {
+                title: "componentDidMount",
+                content:
+                    "componentDidMount는 컴포넌트가 처음 화면에 렌더링된 직후에 호출됩니다. 이 메서드는 데이터 불러오기나 타이머 설정 등 초기화 작업을 수행하기에 적합합니다. 컴포넌트가 마운트될 때 한 번만 호출되기 때문에, 외부 API 호출이나 리소스 초기화 같은 비동기 작업을 여기서 처리할 수 있습니다.",
+                code: `class DataFetcher extends React.Component {\n  componentDidMount() {\n    fetch('https://api.example.com/data')\n      .then(response => response.json())\n      .then(data => this.setState({ data }));\n  }\n\n  render() {\n    return {this.state.data};\n  }\n}`,
+            },
+            {
+                title: "shouldComponentUpdate",
+                content:
+                    "shouldComponentUpdate는 컴포넌트가 업데이트될지 여부를 결정하는 메서드로, true나 false를 반환하여 렌더링을 최적화할 수 있습니다. 기본적으로 true를 반환하며, 특정 조건에서만 업데이트가 필요할 때 사용됩니다.",
+                code: `class Counter extends React.Component {\n  shouldComponentUpdate(nextProps, nextState) {\n    return nextState.count % 2 === 0; // count가 짝수일 때만 업데이트\n  }\n\n  render() {\n    return {this.state.count};\n  }\n}`,
+            },
+            {
+                title: "componentDidUpdate",
+                content:
+                    "componentDidUpdate는 컴포넌트가 업데이트된 직후에 호출되며, 이전 props와 state에 접근할 수 있습니다. 이 메서드는 외부 리소스를 다시 불러오거나 DOM 조작이 필요할 때 유용하며, props나 state 변화에 따른 추가 작업을 수행할 때 사용됩니다.",
+                code: `class ColorChanger extends React.Component {\n  componentDidUpdate(prevProps) {\n    if (prevProps.color !== this.props.color) {\n      console.log('Color updated:', this.props.color);\n    }\n  }\n\n  render() {\n    return {this.props.color};\n  }\n}`,
+            },
+            {
+                title: "componentWillUnmount",
+                content:
+                    "componentWillUnmount는 컴포넌트가 화면에서 제거되기 직전에 호출됩니다. 이 메서드는 타이머나 이벤트 리스너와 같은 리소스를 정리하여 메모리 누수를 방지하는 데 유용합니다. 컴포넌트가 언마운트될 때는 리소스를 정리하지 않으면 메모리 누수가 발생할 수 있으므로, 이 메서드에서 정리 작업을 수행하는 것이 중요합니다.",
+                code: `class Timer extends React.Component {\n  componentDidMount() {\n    this.timerID = setInterval(() => this.tick(), 1000);\n  }\n\n  componentWillUnmount() {\n    clearInterval(this.timerID);\n  }\n\n  tick() {\n    this.setState({ time: new Date() });\n  }\n\n  render() {\n    return {this.state.time.toLocaleTimeString()};\n  }\n}`,
+            },
+            {
+                title: "getDerivedStateFromProps",
+                content:
+                    "getDerivedStateFromProps는 props에서 파생된 state를 컴포넌트의 상태로 가져와야 할 때 사용하는 메서드입니다. 이 메서드는 render 이전에 호출되어 새로운 props에 따라 state를 업데이트할 수 있습니다.",
+                code: `class Example extends React.Component {\n  static getDerivedStateFromProps(nextProps, prevState) {\n    if (nextProps.value !== prevState.value) {\n      return { value: nextProps.value };\n    }\n    return null;\n  }\n\n  render() {\n    return {this.state.value};\n  }\n}`,
+            },
+            {
+                title: "getSnapshotBeforeUpdate",
+                content:
+                    "getSnapshotBeforeUpdate는 업데이트되기 직전 DOM 상태를 캡처할 수 있는 메서드입니다. 반환된 값은 componentDidUpdate로 전달되어 추가적인 DOM 조작이 필요할 때 유용하게 사용됩니다.",
+                code: `class ScrollTracker extends React.Component {\n  getSnapshotBeforeUpdate(prevProps, prevState) {\n    return this.div.scrollHeight;\n  }\n\n  componentDidUpdate(prevProps, prevState, snapshot) {\n    if (snapshot !== this.div.scrollHeight) {\n      this.div.scrollTop = this.div.scrollHeight;\n    }\n  }\n\n  render() {\n    return <div ref={div => this.div = div}>{/* content */}</div>;\n  }\n}`,
+            },
+        ],
     },
     {
         id: "2.4",
