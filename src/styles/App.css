@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+/* 상단 탭바 */
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  padding: 10px 0;
+}
+
+.tab {
+  font-size: 16px;
+  color: #757575;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.3s;
+}
+
+.tab.active {
+  font-weight: bold;
+  color: #000;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: calc(100% / 3);
+  background-color: #000;
+  transition: transform 0.3s ease;
+}
