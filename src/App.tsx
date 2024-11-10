@@ -33,8 +33,9 @@ const App: React.FC = () => {
             Practice
           </button>
         </Link>
+        <div className="tab-indicator" style={{transform: `translateX(${(activeTab - 1) * 100}%)` }}></div>
       </div>
-      <div className="tab-indicator" style={{ transform: `translateX(${(activeTab - 1) * 100}%)` }}></div>
+      
       
       {/* 라우터 설정 */}
       <Routes>
