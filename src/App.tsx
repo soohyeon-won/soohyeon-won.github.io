@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TopicsList from "./components/TopicsList";
 import TopicPage from "./components/TopicPage";
 import ComponentsLifecycle from './components/practice/ComponentsLifecycle';
 import './styles/App.css';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState<number>(() => {
+    switch (window.location.pathname) {
+      case "/components-lifecycle":
+        return 2;
+      default:
+        return 1;
+    }
+  });
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);
