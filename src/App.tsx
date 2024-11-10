@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TopicsList from "./components/TopicsList";
-import TopicPage from "./components/TopicPage";
 import ComponentsLifecycle from './components/practice/ComponentsLifecycle';
 import './styles/App.css';
 
@@ -40,7 +39,7 @@ const App: React.FC = () => {
       {/* 라우터 설정 */}
       <Routes>
         <Route path="/topics" element={<TopicsList />} />
-        <Route path="/topic/:id" element={<TopicPage />} />
+        {/* <Route path="/topic/:id" element={<TopicPage />} /> */}
         <Route path="/components-lifecycle" element={<ComponentsLifecycle />} />
       </Routes>
     </div>

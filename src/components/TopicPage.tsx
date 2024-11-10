@@ -1,15 +1,15 @@
-// src/components/TopicPage.tsx
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { topics } from "./data";
 import TopicDetail from './TopicDetail';
-import { Topic } from './data'; // Topic 타입을 가져옵니다.
-import { Helmet } from 'react-helmet'
+import { Topic } from './data';
+import { Helmet } from 'react-helmet';
 
-const TopicPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // URL에서 :id를 가져옴
+interface TopicPageProps {
+  topicId: string;
+}
 
-  const topic = topics.find(t => t.id === id) as Topic | undefined; // 해당 id에 맞는 데이터를 찾음
+const TopicPage = ({ topicId }: TopicPageProps) => {
+  const topic = topics.find(t => t.id === topicId) as Topic | undefined;
   console.log("Found topic:", topic);
 
   return (

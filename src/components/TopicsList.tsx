@@ -1,19 +1,17 @@
-// src/TopicsList.tsx
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
-import { Link, Route, Routes } from "react-router-dom";
 import "../styles/TopicsList.css";
 import { topics } from "./data";
-import ComponentsLifecycle from "./practice/ComponentsLifecycle";
 import TopicPage from "./TopicPage";
 
 const TopicsList: React.FC = () => {
     const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
 
+    // useState로 정의된 상태는 React가 그 변경을 감지하고, 변경될 때마다 컴포넌트를 다시 렌더링
     const handleTopicClick = (id: string) => {
         setSelectedTopicId(id);
     };
-    
+
     return (
         <div className="content-wrapper">
             <div className="left-panel">
@@ -25,27 +23,27 @@ const TopicsList: React.FC = () => {
                 </Helmet>
                 <ul className="list">
                     {topics.map(topic => (
-                        <li key={topic.id} className="list-item">
+                        <li key={topic.id} className="list-item" onClick={() => handleTopicClick(topic.id)}>
                             {topic.depth === 0 ? (
                                 <h2>
                                     {topic.id}. {topic.title}
                                 </h2>
                             ) : (
-                                <Link to={`/topic/${topic.id}`}>- {topic.title}</Link>
+                                <span>- {topic.title}</span>
                             )}
                         </li>
                     ))}
                 </ul>
             </div>
-            
-            
             <div className="right-panel">
                 <h1 className="title">Practice Area</h1>
-                {/* 선택한 주제에 따른 컴포넌트 렌더링 */}
-                <Routes>
-                    <Route path="/topic/:id" element={<TopicPage />} />
-                    <Route path="/components-lifecycle" element={<ComponentsLifecycle />} />
-                </Routes>
+                {selectedTopicId ? (
+                    <div className="component-item">
+                        <TopicPage topicId={selectedTopicId} />
+                    </div>
+                ) : (
+                    <p>Select a topic to view its preview here.</p>
+                )}
                 <p>This is where you can develop and view your practice implementations.</p>
             </div>
         </div>
