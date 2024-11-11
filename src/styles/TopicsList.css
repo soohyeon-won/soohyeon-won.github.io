@@ -26,6 +26,17 @@
     font-size: 1.2rem;
 }
 
+.list-item:hover {
+  background-color: #e6f7ff; /* 호버 시 배경색 변경 (부드러운 파란색) */
+  cursor: pointer; /* 호버 시 커서를 포인터로 변경 */
+}
+
+.list-item.selected {
+  background-color: #cceeff; /* 선택된 항목의 배경색 변경 */
+  color: #003366; /* 선택된 항목의 텍스트 색상 변경 */
+  font-weight: bold; /* 선택된 항목의 텍스트를 굵게 */
+}
+
 .list-item h2 {
     font-size: 1.8rem;
     color: #0056b3;

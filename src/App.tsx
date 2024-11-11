@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TopicsList from "./components/TopicsList";
-import TopicPage from "./components/TopicPage";
 import ComponentsLifecycle from './components/practice/ComponentsLifecycle';
 import './styles/App.css';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<number>(1);
+  const [activeTab, setActiveTab] = useState<number>(() => {
+    switch (window.location.pathname) {
+      case "/components-lifecycle":
+        return 2;
+      default:
+        return 1;
+    }
+  });
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);
@@ -26,13 +32,14 @@ const App: React.FC = () => {
             Practice
           </button>
         </Link>
+        <div className="tab-indicator" style={{transform: `translateX(${(activeTab - 1) * 100}%)` }}></div>
       </div>
-      <div className="tab-indicator" style={{ transform: `translateX(${(activeTab - 1) * 100}%)` }}></div>
+      
       
       {/* 라우터 설정 */}
       <Routes>
         <Route path="/topics" element={<TopicsList />} />
-        <Route path="/topic/:id" element={<TopicPage />} />
+        {/* <Route path="/topic/:id" element={<TopicPage />} /> */}
         <Route path="/components-lifecycle" element={<ComponentsLifecycle />} />
       </Routes>
     </div>
