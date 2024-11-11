@@ -23,7 +23,7 @@ const TopicsList: React.FC = () => {
                 </Helmet>
                 <ul className="list">
                     {topics.map(topic => (
-                        <li key={topic.id} className="list-item" onClick={() => handleTopicClick(topic.id)}>
+                        <li key={topic.id} className={`list-item ${selectedTopicId === topic.id ? 'selected' : ''}`} onClick={() => handleTopicClick(topic.id)}>
                             {topic.depth === 0 ? (
                                 <h2>
                                     {topic.id}. {topic.title}
