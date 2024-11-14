@@ -1,10 +1,11 @@
+// src/App.tsx
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
 import TopicsList from "./components/TopicsList";
 import ComponentsLifecycle from "./components/practice/ComponentsLifecycle";
 import "./styles/App.css";
 
-const App: React.FC = () => {
+const App = () => {
     const [activeTab, setActiveTab] = useState<number>(1);
 
     const handleTabClick = (index: number) => {
@@ -39,9 +40,10 @@ const App: React.FC = () => {
     );
 };
 
-const RootApp: React.FC = () => {
+const RootApp = () => {
     return (
         <Router>
+            
             <App />
         </Router>
     );
