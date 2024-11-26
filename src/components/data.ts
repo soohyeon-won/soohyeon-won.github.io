@@ -155,8 +155,8 @@ export const topics: Topic[] = [
     { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
     {
         id: "2.1",
-        title: "JSX syntax",
-        content: "JSX는 JavaScript와 HTML을 결합하여 사용할 수 있는 문법입니다. React 컴포넌트에서 HTML을 렌더링할 때 사용됩니다.",
+        title: "JSX(Javascript Syntax eXtension)",
+        content: "JSX는 JavaScript와 HTML을 결합하여 사용할 수 있는 문법입니다. React 컴포넌트에서 HTML을 렌더링할 때 사용됩니다.\n브라우저에서 실행하기 전에 바벨을 사용하여 일반 자바스크립트 형태의 코드로 변환\n최신 문법이나 특수한 문법(예: JSX)으로 작성된 코드를 더 넓은 범위의 브라우저에서 실행 가능한 형태로 변환",
         depth: 1,
         sections: [
             {

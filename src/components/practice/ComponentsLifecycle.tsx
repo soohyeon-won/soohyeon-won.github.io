@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism"; // 원하는 테마로 변경 가능
 import "prismjs/themes/prism-tomorrow.css";
+import ComponentsBtn from "./ComponentsBtn";
 
 const ComponentsLifecycle = () => {
     const [lifecycleStage, setLifecycleStage] = useState("Mounted");
@@ -38,6 +39,8 @@ const ComponentsLifecycle = () => {
                 </SyntaxHighlighter>
                 return 문 내에 정리 함수로 componentWillUnmount 작업을 수행할 수 있습니다.
             </p>
+
+            <ComponentsBtn></ComponentsBtn>
         </div>
     );
 };
