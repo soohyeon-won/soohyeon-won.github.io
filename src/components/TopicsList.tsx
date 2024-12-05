@@ -23,7 +23,11 @@ const TopicsList: React.FC = () => {
                 </Helmet>
                 <ul className="list">
                     {topics.map(topic => (
-                        <li key={topic.id} className={`list-item ${selectedTopicId === topic.id ? 'selected' : ''}`} onClick={() => handleTopicClick(topic.id)}>
+                        <li
+                            key={topic.id}
+                            className={`list-item ${selectedTopicId === topic.id ? "selected" : ""} ${topic.depth === 0 ? "no-hover" : ""}`}
+                            onClick={topic.depth === 1 ? () => handleTopicClick(topic.id) : undefined}
+                        >
                             {topic.depth === 0 ? (
                                 <h2>
                                     {topic.id}. {topic.title}
@@ -44,7 +48,6 @@ const TopicsList: React.FC = () => {
                 ) : (
                     <p>Select a topic to view its preview here.</p>
                 )}
-                <p>This is where you can develop and view your practice implementations.</p>
             </div>
         </div>
     );

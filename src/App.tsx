@@ -43,7 +43,6 @@ const App = () => {
 const RootApp = () => {
     return (
         <Router>
-            
             <App />
         </Router>
     );
