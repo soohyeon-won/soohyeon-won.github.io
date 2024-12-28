@@ -1,14 +1,16 @@
 import React from 'react';
 
-interface ComponentsBtnProps {} // 필요시 props 인터페이스 추가 가능
+interface ComponentsBtnProps {
+  buttonId: number;
+}
 
-const ComponentsBtn = (props: ComponentsBtnProps) => {
-  const handleClick = (id: number): void => {
-    alert(`Button clicked with id: ${id}`);
+const ComponentsBtn = (props: ComponentsBtnProps) => { // 함수형 컴포넌트
+  const handleClick = (id: number): void => { // Arrow Function
+    alert(`Button clicked with id: ${id}`)
   };
 
   return (
-    <button onClick={() => handleClick(1)}>Click me</button>
+    <button onClick={() => handleClick(props.buttonId)}>Click me</button> // JSX를 렌더링
   );
 };
 

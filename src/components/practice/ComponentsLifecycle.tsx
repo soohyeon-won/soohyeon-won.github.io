@@ -44,7 +44,7 @@ const ComponentsLifecycle = () => {
                 return 문 내에 정리 함수로 componentWillUnmount 작업을 수행할 수 있습니다.
             </p>
 
-            <ComponentsBtn></ComponentsBtn>
+            <ComponentsBtn buttonId={10}></ComponentsBtn>
         </div>
     );
 };
