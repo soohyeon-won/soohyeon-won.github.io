@@ -40,7 +40,6 @@ const TopicsList: React.FC = () => {
                 </ul>
             </div>
             <div className="right-panel">
-                <h1 className="title">Practice Area</h1>
                 {selectedTopicId ? (
                     <div className="component-item">
                         <TopicPage topicId={selectedTopicId} />
