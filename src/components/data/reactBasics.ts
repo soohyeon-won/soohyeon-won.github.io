@@ -1,32 +1,66 @@
 import { Topic } from "../data";
 
 export const reactBasicsTopics: Topic[] = [
-    { id: "2", title: "React Basics", content: "Detailed content about React Basics", depth: 0 },
+    {
+        id: "2",
+        title: "React Basics",
+        content: "React의 기본 개념, JSX, 컴포넌트, Props, State, 이벤트 처리 및 리스트 렌더링에 대해 학습합니다.",
+        depth: 0,
+    },
     {
         id: "2.1",
         title: "JSX(Javascript Syntax eXtension)",
-        content:
-            "JSX는 JavaScript와 HTML을 결합하여 사용할 수 있는 문법입니다. React 컴포넌트에서 HTML을 렌더링할 때 사용됩니다.\n브라우저에서 실행하기 전에 바벨을 사용하여 일반 자바스크립트 형태의 코드로 변환\n최신 문법이나 특수한 문법(예: JSX)으로 작성된 코드를 더 넓은 범위의 브라우저에서 실행 가능한 형태로 변환",
+        content: `JSX는 JavaScript와 HTML을 결합한 문법입니다. React 컴포넌트에서 HTML을 정의할 때 사용하며, 실제 브라우저에서 실행되기 전에 Babel이 이를 JavaScript 코드로 변환합니다.`,
         depth: 1,
         sections: [
             {
                 title: "JSX Basics",
-                content: "JSX는 JavaScript의 확장 문법으로, HTML처럼 보이지만 JavaScript 코드로 변환됩니다.",
+                content: "JSX는 React에서 HTML을 정의하기 위한 문법입니다. JSX는 JavaScript 코드로 변환되므로 태그 내부에 JavaScript 표현식을 삽입할 수 있습니다.",
                 code: `const element = <h1>Hello, world!</h1>;`,
             },
             {
-                title: "Embedding Expressions in JSX",
-                content: "중괄호 `{}`를 사용해 JSX 내부에 JavaScript 표현식을 삽입할 수 있습니다.",
-                code: `const name = 'Alice';\nconst element = <h1>Hello, {name}!</h1>;`,
+                title: "Attributes in JSX",
+                content: "JSX에서 HTML 속성은 camelCase로 작성되며, JavaScript 값을 전달하려면 `{}`를 사용합니다.",
+                code: `<img src={imageUrl} alt="Sample Image" />`,
+            },
+            {
+                title: "JSX Limitations",
+                content: "JSX는 반드시 닫힌 태그를 사용해야 하며, 여러 요소를 반환할 때는 부모 요소로 감싸야 합니다.",
+                code: `// 반드시 부모 요소로 감싸야 합니다\nreturn (\n  <>\n    <h1>Hello</h1>\n    <p>Welcome!</p>\n  </>\n);`,
             },
         ],
     },
     {
         id: "2.2",
         title: "Components and props",
-        content: "컴포넌트는 React의 기본 구성 요소입니다. props는 부모 컴포넌트에서 자식 컴포넌트로 전달되는 데이터입니다.",
+        content: "React 컴포넌트는 재사용 가능한 UI 블록입니다. Props는 부모 컴포넌트가 자식 컴포넌트에 데이터를 전달하는 방법입니다.",
         depth: 1,
         sections: [
+            {
+                title: "What is a Component?",
+                content: "컴포넌트는 React의 기본 빌딩 블록입니다. UI를 작은 조각으로 나누고 각 조각을 독립적으로 관리할 수 있습니다.",
+                code: `function Greeting() {\n  return <h1>Hello, World!</h1>;\n}`,
+            },
+            {
+                title: "Functional Components",
+                content: "함수형 컴포넌트는 간단한 구조와 React Hooks를 사용할 수 있는 장점으로 가장 많이 사용됩니다.",
+                code: `function Welcome(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}`,
+            },
+            {
+                title: "Class Components",
+                content: "클래스형 컴포넌트는 ES6 클래스 문법으로 정의되며, 이전 React 버전에서 주로 사용되었습니다.",
+                code: `class Welcome extends React.Component {\n  render() {\n    return <h1>Hello, {this.props.name}!</h1>;\n  }\n}`,
+            },
+            {
+                title: "Props",
+                content: "Props는 부모에서 자식 컴포넌트로 데이터를 전달하기 위한 방법입니다. 읽기 전용이며, 자식 컴포넌트에서 변경할 수 없습니다.",
+                code: `<Greeting name="Alice" /> // 'Hello, Alice!' 출력`,
+            },
+            {
+                title: "Default Props",
+                content: "컴포넌트의 기본값을 설정하려면 defaultProps를 사용합니다.",
+                code: `function Greeting({ name = "Guest" }) {\n  return <h1>Hello, {name}!</h1>;\n}\n\nGreeting.defaultProps = {\n  name: "Guest",\n};`,
+            },
             {
                 title: "React란?",
                 content:
@@ -34,17 +68,7 @@ export const reactBasicsTopics: Topic[] = [
                 code: ``,
             },
             {
-                title: "컴포넌트란?",
-                content: "컴포넌트는 함수형 컴포넌트와 클래스형 컴포넌트로 나눌 수 있습니다. 함수형 컴포넌트는 함수 형태로 정의되며 주로 사용됩니다.",
-                code: `// 간단한 인사말 컴포넌트\nfunction 인사말() {\nreturn <h1>안녕하세요!</h1>;\n}\n\n// 사용할 때는 이렇게 씁니다\n<인사말 />  // 화면에 "안녕하세요!" 가 표시됩니다`,
-            },
-            {
-                title: "Props",
-                content: "Props는 컴포넌트에 정보를 전달할 때 사용합니다. 데이터를 교환하는 데 사용됩니다.",
-                code: `<Welcome name="Alice" /> // 'Hello, Alice' 출력`,
-            },
-            {
-                title: "Functional and Class Components",
+                title: "Functional vs Class Components",
                 content: "컴포넌트는 함수형 컴포넌트와 클래스형 컴포넌트로 나눌 수 있습니다. 함수형 컴포넌트는 함수 형태로 정의되며 주로 사용됩니다.",
                 code: `//함수형 컴포넌트 (새로운 방식, 더 많이 사용됨)\nfunction Welcome(props) {\n  return <h1>Hello, {props.name}</h1>;\n}\n\n//클래스형 컴포넌트 (예전 방식)\nclass Welcome extends React.Component {\n  render() {\n    return <h1>Hello, {this.props.name}</h1>;\n  }\n}`,
             },
@@ -64,12 +88,11 @@ export const reactBasicsTopics: Topic[] = [
         sections: [
             {
                 title: "State란 무엇인가?",
-                content:
-                    "React에서 'State'는 컴포넌트의 현재 상태 또는 내부 데이터로, 컴포넌트 내에서 변할 수 있는 값을 저장합니다. 예를 들어, 사용자 입력을 추적하거나 UI 요소가 변경될 때마다 State를 사용하여 해당 정보를 저장하고 업데이트할 수 있습니다. 클래스 컴포넌트에서는 `this.state`로 접근하고, 값을 변경할 때는 `setState` 메서드를 사용합니다. State가 변경되면 React는 컴포넌트를 다시 렌더링하여 UI를 최신 상태로 유지합니다.",
+                content: "State는 컴포넌트의 동적인 데이터를 저장하며, 변경 시 컴포넌트를 다시 렌더링합니다.",
                 code: `class Counter extends React.Component {\n  state = { count: 0 };\n\n  increment = () => {\n    this.setState({ count: this.state.count + 1 });\n  };\n\n  render() {\n    return {this.state.count};\n  }\n}`,
             },
             {
-                title: "라이프사이클 메서드란?",
+                title: "Lifecycle 메서드",
                 content:
                     "React 컴포넌트는 생성부터 제거까지 일련의 단계들을 거치며, 이 과정에서 특정 작업을 수행할 수 있도록 하는 라이프사이클 메서드가 있습니다. 라이프사이클 메서드는 컴포넌트의 초기화, 업데이트, 제거 과정에서 각각 호출되며, 각 메서드는 다양한 상황에서 필요한 작업을 수행하기에 적합합니다.",
                 code: "",
@@ -110,6 +133,11 @@ export const reactBasicsTopics: Topic[] = [
                     "getSnapshotBeforeUpdate는 업데이트되기 직전 DOM 상태를 캡처할 수 있는 메서드입니다. 반환된 값은 componentDidUpdate로 전달되어 추가적인 DOM 조작이 필요할 때 유용하게 사용됩니다.",
                 code: `class ScrollTracker extends React.Component {\n  getSnapshotBeforeUpdate(prevProps, prevState) {\n    return this.div.scrollHeight;\n  }\n\n  componentDidUpdate(prevProps, prevState, snapshot) {\n    if (snapshot !== this.div.scrollHeight) {\n      this.div.scrollTop = this.div.scrollHeight;\n    }\n  }\n\n  render() {\n    return <div ref={div => this.div = div}>{/* content */}</div>;\n  }\n}`,
             },
+            {
+                title: "useEffect와 Cleanup",
+                content: "`useEffect` 훅을 사용하여 비동기 작업을 수행하거나, 컴포넌트가 제거될 때 리소스를 정리할 수 있습니다.",
+                code: `useEffect(() => {\n  const interval = setInterval(() => {\n    console.log("Tick");\n  }, 1000);\n\n  return () => clearInterval(interval); // Cleanup\n}, []);`,
+            },
         ],
     },
     {
@@ -119,9 +147,9 @@ export const reactBasicsTopics: Topic[] = [
         depth: 1,
         sections: [
             {
-                title: "Event Handling",
+                title: "Basic Event Handling",
                 content: "이벤트 핸들러는 JSX에서 `{}`를 사용해 전달할 수 있으며, 함수 참조를 통해 전달됩니다.",
-                code: `<button onClick={handleClick}>Click me</button>`,
+                code: `function App() {\n  const handleClick = () => console.log("Button clicked!");\n\n  return <button onClick={handleClick}>Click me</button>;\n}`,
             },
             {
                 title: "Passing Arguments to Event Handlers",
@@ -133,18 +161,18 @@ export const reactBasicsTopics: Topic[] = [
     {
         id: "2.5",
         title: "Lists and keys",
-        content: "리스트는 JavaScript의 map 메서드를 사용해 렌더링할 수 있으며, 각 항목에는 고유한 키를 부여해야 합니다.",
+        content: "React에서 리스트를 렌더링할 때는 고유한 키를 사용해야 합니다.",
         depth: 1,
         sections: [
             {
                 title: "Rendering Lists",
-                content: "map 함수를 사용해 리스트를 렌더링할 수 있습니다.",
-                code: `const listItems = numbers.map((number) =>\n  <li key={number.toString()}>{number}</li>\n);`,
+                content: "JavaScript의 `map` 메서드를 사용해 리스트를 렌더링합니다.",
+                code: `const items = [1, 2, 3];\nconst list = items.map(item => <li key={item}>{item}</li>);\nreturn <ul>{list}</ul>;`,
             },
             {
-                title: "Keys",
-                content: "리스트 항목에 고유한 키를 추가하여 리액트가 항목을 식별하고 최적화할 수 있게 합니다.",
-                code: `<ul>{listItems}</ul>`,
+                title: "Keys의 중요성",
+                content: "고유한 키는 React가 리스트 항목을 식별하고 성능을 최적화하는 데 사용됩니다.",
+                code: `// 키를 사용하지 않을 경우\n<li>{item}</li>\n\n// 키를 사용할 경우\n<li key={item}>{item}</li>`,
             },
         ],
     }
