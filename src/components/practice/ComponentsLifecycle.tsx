@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism"; // 원하는 테마로 변경 가능
 import "prismjs/themes/prism-tomorrow.css";
-import ComponentsBtn from "./ComponentsBtn";
+import ComponentsBtn, { MyBtn } from "./ComponentsBtn";
 
 const ComponentsLifecycle = () => {
     const [lifecycleStage, setLifecycleStage] = useState("Mounted"); // React의 상태 관리 Hook
@@ -45,6 +45,8 @@ const ComponentsLifecycle = () => {
             </p>
 
             <ComponentsBtn buttonId={10}></ComponentsBtn>
+            <ComponentsBtn buttonId={10}></ComponentsBtn>
+            <MyBtn message='My btn tapped'></MyBtn>
         </div>
     );
 };
