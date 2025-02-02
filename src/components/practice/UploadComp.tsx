@@ -17,6 +17,9 @@ const UploadComp = () => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value);
     };
+    const handleInputChange2 = (s: string) => {
+        setInput(s);
+    };
     
     const handleUpload = () => {
         setNames((prevState) => {
@@ -25,10 +28,13 @@ const UploadComp = () => {
         })
     };
 
-
     return (
         <div>
             <input type="text" value={input} onChange={handleInputChange}></input>
+            <input type="text" value={input} onChange={
+                (input) => handleInputChange2(input.target.value) 
+                }>
+            </input>
             <button onClick={handleUpload}>Upload</button>
             {names.map((name, idx) => {
                 return <p key={idx}>{name}</p>

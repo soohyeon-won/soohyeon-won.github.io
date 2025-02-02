@@ -1,15 +1,13 @@
 import React, { useState } from "react"
-import ComponentsLifecycle from "./ComponentsLifecycle"
 import useWindowSize from "./StudyCustomHooks";
 
 import '../../styles/App.css'
 import StatePracticeComp from "./StatePracticeComp";
 import UploadComp from "./UploadComp";
+import UseEffectComp from "./UseEffectComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
-const PracticeComp = () => {  
-
-    const { width, height } = useWindowSize();
+const PracticeComp = () => { 
 
     const [ isOn, setToggle ] = useState(true);
     const toggleBtn = () => setToggle(!isOn)
@@ -64,11 +62,13 @@ const PracticeComp = () => {
         <button onClick={setSavedTitle}>저장</button>
         <p>{savedText}</p>
 
+        <h1>UseState</h1>
         <Modal></Modal>
-
         <StatePracticeComp></StatePracticeComp>
-
         <UploadComp></UploadComp>
+
+        <h1>UseEffect</h1>
+        <UseEffectComp></UseEffectComp>
     </div>
 }
 
