@@ -8,6 +8,8 @@ import Tab from "./components/Tab";
 
 const App = () => {
     const [activeTab, setActiveTab] = useState<number>(1);
+
+    let tab1Title = 'study'
   
     const handleTabClick = (index: number) => {
       setActiveTab(index);
@@ -22,7 +24,7 @@ const App = () => {
         <div className="top-tabs">
           <Tab 
             to="/study" 
-            label="Study" 
+            label={tab1Title} 
             isActive={activeTab === 1} 
             onClick={() => handleTabClick(1)} 
           />

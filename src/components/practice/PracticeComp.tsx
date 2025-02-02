@@ -3,6 +3,8 @@ import ComponentsLifecycle from "./ComponentsLifecycle"
 import useWindowSize from "./StudyCustomHooks";
 
 import '../../styles/App.css'
+import StatePracticeComp from "./StatePracticeComp";
+import UploadComp from "./UploadComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => {  
@@ -17,6 +19,8 @@ const PracticeComp = () => {
         setPrice((prevValue) => prevValue + price);
     };
 
+    let [like, setLike] = useState(0);
+
     const [ titleText, setText ] = useState("placeholder");
     const setTitle = (text: string) => {
         console.log(text);
@@ -24,6 +28,25 @@ const PracticeComp = () => {
     };
     const [ savedText, setSavedText ] = useState("");
     const setSavedTitle = () => setSavedText(titleText);
+
+    let [titles, setTitles] = useState(['test1', 'test2']);
+
+    function Modal() {
+        return(
+            <>
+            <div>
+                <h4>{titles[0]} <span onClick={() => {
+                    setLike(like+1);
+                    let copyTitles = titles
+                    copyTitles[0] = 'A'
+                    setTitles(copyTitles);
+                    }}>좋아요👍</span> {like} </h4>
+                <h4>{titles[1]}</h4>
+            </div>
+            <div></div>
+            </> // 병렬 된 div를 하나로 묶어줌
+        )
+    }
 
     return <div> 
         <p>1. useState를 이용한 Toggle버튼</p>
@@ -40,6 +63,12 @@ const PracticeComp = () => {
         <p>{titleText}</p>
         <button onClick={setSavedTitle}>저장</button>
         <p>{savedText}</p>
+
+        <Modal></Modal>
+
+        <StatePracticeComp></StatePracticeComp>
+
+        <UploadComp></UploadComp>
     </div>
 }
 
