@@ -13,6 +13,7 @@ export const Timer = () => {
         const timer = setInterval(() => {
             console.log('1초 타이머...');
         }, 1000);
+        
 
         // clean up
         // timer component가 unmount될 때 (화면에서 사라질 때) 타이머를 끝내줌
