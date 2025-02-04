@@ -79,3 +79,25 @@ export const UseRefRenderCount = () => {
         </div>
     );
 };
+
+export const UseRefDomComp = () => {
+
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        console.log(inputRef.current);
+        inputRef.current?.focus();
+    }, [])
+
+    const login = () => {
+        alert(`Welcome ${inputRef.current?.value}`);
+        inputRef.current?.focus();
+    }
+
+    return (
+        <div>
+            <input ref={inputRef} type="text" placeholder="userName"></input>
+            <button onClick={login}> Login </button>
+        </div>
+    );
+};
