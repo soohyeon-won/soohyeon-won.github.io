@@ -7,6 +7,7 @@ import UploadComp from "./UploadComp";
 import UseEffectComp from "./UseEffectComp";
 import UseEffectCleanComp from "./UseEffectCleanComp";
 import { UseRefComp, UseRefDomComp, UseRefRenderCount } from "./UseRefComp";
+import { UseContextComp } from "./UseContextComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => { 
@@ -77,6 +78,7 @@ const PracticeComp = () => {
         <UseRefComp></UseRefComp>
         <UseRefRenderCount></UseRefRenderCount>
         <UseRefDomComp></UseRefDomComp>
+        <UseContextComp></UseContextComp>
     </div>
 }
 
