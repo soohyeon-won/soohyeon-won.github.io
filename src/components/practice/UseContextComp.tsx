@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 export const UseContextComp = () => {
     // Prop Drilling
@@ -9,9 +10,21 @@ export const UseContextComp = () => {
     // 단점: 컴포넌트를 재사용하기 어려워짐.
     // 다양한 레벨의 많은 컴포넌트들에게 같은 데이터를 전달할 때 사용
     // 사용예제1 - 다크모드 전역 변경
+
+    const [isDark, setIsDark] = useState(false);
+
     return (
         <div>
-
+            <p>{isDark}</p>
+            <button onClick={() => setIsDark(!isDark)}>다크모드 선택</button>
+            <Header isDark={isDark}></Header>
         </div>
     );
 };
+
+const Header = ({isDark=false}) => {
+
+    return (
+        <div style={{backgroundColor : isDark ? 'black' : 'red', width: 200, height: 200}}></div>
+    );
+}

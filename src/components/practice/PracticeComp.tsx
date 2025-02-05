@@ -78,6 +78,8 @@ const PracticeComp = () => {
         <UseRefComp></UseRefComp>
         <UseRefRenderCount></UseRefRenderCount>
         <UseRefDomComp></UseRefDomComp>
+
+        <h1>UseContext</h1>
         <UseContextComp></UseContextComp>
     </div>
 }
