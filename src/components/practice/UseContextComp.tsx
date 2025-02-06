@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 
 
 export const UseContextComp = () => {
@@ -11,14 +12,18 @@ export const UseContextComp = () => {
     // 다양한 레벨의 많은 컴포넌트들에게 같은 데이터를 전달할 때 사용
     // 사용예제1 - 다크모드 전역 변경
 
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(false); // isDark 를 실제로 필요로 하지는 않는 중간 컴포넌트
 
     return (
+        // <ThemeContext.Provider value={isDark}>
         <div>
             <p>{isDark}</p>
             <button onClick={() => setIsDark(!isDark)}>다크모드 선택</button>
             <Header isDark={isDark}></Header>
+            <Content isDark={isDark}></Content>
+            <Footer isDark={isDark} setIsDark={setIsDark} />
         </div>
+        // </ThemeContext.Provider>
     );
 };
 
@@ -28,3 +33,42 @@ const Header = ({isDark=false}) => {
         <div style={{backgroundColor : isDark ? 'black' : 'red', width: 200, height: 200}}></div>
     );
 }
+
+const Content = ({ isDark }: { isDark: boolean }) => (
+    <div
+      style={{
+        backgroundColor: isDark ? "black" : "red",
+        width: 200,
+        height: 200,
+        color: isDark ? "white" : "black",
+      }}
+    >
+      <p>홍길동님, 좋은 하루 되세요</p>
+    </div>
+  );
+
+interface FooterProps {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Footer = ({ isDark, setIsDark }: FooterProps) => {
+    const toggleTheme = () => {
+      setIsDark((prev) => !prev);
+    };
+  
+    return (
+      <div>
+        <div
+          style={{
+            backgroundColor: isDark ? "black" : "yellow",
+            width: 200,
+            height: 50,
+          }}
+        ></div>
+        <button className="button" onClick={toggleTheme}>
+          Dark Mode
+        </button>
+      </div>
+    );
+  };
