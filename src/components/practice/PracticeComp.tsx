@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import useWindowSize from "./StudyCustomHooks";
 
 import '../../styles/App.css'
 import StatePracticeComp from "./StatePracticeComp";

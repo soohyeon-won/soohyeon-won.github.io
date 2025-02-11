@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-
+import { ThemeConsumer } from "styled-components";
 
 export const UseContextComp = () => {
     // Prop Drilling
@@ -15,24 +15,50 @@ export const UseContextComp = () => {
     const [isDark, setIsDark] = useState(false); // isDark 를 실제로 필요로 하지는 않는 중간 컴포넌트
 
     return (
-        // <ThemeContext.Provider value={isDark}>
+        // 1. useState를 Props로 넘겨서 사용
+        // <div>
+        //     <p>{isDark}</p>
+        //     <button onClick={() => setIsDark(!isDark)}>다크모드 선택</button>
+        //     <Header isDark={isDark}></Header>
+        //     <Content isDark={isDark}></Content>
+        //     <Footer isDark={isDark} setIsDark={setIsDark} />
+        // </div>
+
+        // 2. 아래는 useContext를 이용
+        <ThemeContext.Provider value={{isDark, setIsDark}}>
         <div>
             <p>{isDark}</p>
             <button onClick={() => setIsDark(!isDark)}>다크모드 선택</button>
-            <Header isDark={isDark}></Header>
+            <Header></Header>
             <Content isDark={isDark}></Content>
             <Footer isDark={isDark} setIsDark={setIsDark} />
         </div>
-        // </ThemeContext.Provider>
+        </ThemeContext.Provider>
     );
 };
 
-const Header = ({isDark=false}) => {
+// const Header = ({isDark=false}) => {
+
+//     return (
+//         <div style={{backgroundColor : isDark ? 'black' : 'red', width: 200, height: 200}}></div>
+//     );
+// }
+
+const Header = () => {
+  const useTheme = () => {
+    const context = useContext(ThemeContext);
+    if (context === undefined) {
+        throw new Error("useTheme must be used within a ThemeContext.Provider");
+    }
+    return context;
+};
 
     return (
-        <div style={{backgroundColor : isDark ? 'black' : 'red', width: 200, height: 200}}></div>
+      <div></div>
+        // <div style={{backgroundColor : isDark ? 'black' : 'red', width: 200, height: 200}}></div>
     );
 }
+
 
 const Content = ({ isDark }: { isDark: boolean }) => (
     <div
