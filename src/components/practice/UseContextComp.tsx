@@ -1,6 +1,14 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
-import { ThemeConsumer } from "styled-components";
+
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    // <ThemeContext.Provider value={{isDark, setIsDark}}> 감싸지 않은 하위컴포넌트에서 사용 시 에러 발생
+      throw new Error("useTheme must be used within a ThemeContext.Provider");
+  }
+  return context;
+};
 
 export const UseContextComp = () => {
     // Prop Drilling
@@ -24,11 +32,11 @@ export const UseContextComp = () => {
         //     <Footer isDark={isDark} setIsDark={setIsDark} />
         // </div>
 
-        // 2. 아래는 useContext를 이용
-        <ThemeContext.Provider value={{isDark, setIsDark}}>
+        // 2. 아래는 useContext를 이용 
+        <ThemeContext.Provider value={{isDark, setIsDark}}> 
         <div>
             <p>{isDark}</p>
-            <button onClick={() => setIsDark(!isDark)}>다크모드 선택</button>
+            <button onClick={() => setIsDark(!isDark)}>다크모드 선택 isDark: {isDark.toString()}</button>
             <Header></Header>
             <Content isDark={isDark}></Content>
             <Footer isDark={isDark} setIsDark={setIsDark} />
@@ -45,17 +53,16 @@ export const UseContextComp = () => {
 // }
 
 const Header = () => {
-  const useTheme = () => {
-    const context = useContext(ThemeContext);
-    if (context === undefined) {
-        throw new Error("useTheme must be used within a ThemeContext.Provider");
-    }
-    return context;
-};
 
+    const { isDark } = useTheme();
     return (
-      <div></div>
-        // <div style={{backgroundColor : isDark ? 'black' : 'red', width: 200, height: 200}}></div>
+        <div style={
+          {backgroundColor : isDark ? 'black' : 'red',
+             width: 200,
+              height: 44,
+               color: isDark ? "white" : "black"
+              }
+            }>Header</div>
     );
 }
 
@@ -63,13 +70,13 @@ const Header = () => {
 const Content = ({ isDark }: { isDark: boolean }) => (
     <div
       style={{
-        backgroundColor: isDark ? "black" : "red",
+        backgroundColor: isDark ? "black" : "green",
         width: 200,
-        height: 200,
-        color: isDark ? "white" : "black",
+        height: 100,
+        color: isDark ? "white" : "black"
       }}
     >
-      <p>홍길동님, 좋은 하루 되세요</p>
+      Content
     </div>
   );
 
@@ -87,13 +94,14 @@ const Footer = ({ isDark, setIsDark }: FooterProps) => {
       <div>
         <div
           style={{
-            backgroundColor: isDark ? "black" : "yellow",
+            backgroundColor: isDark ? "black" : "pink",
             width: 200,
             height: 50,
+            color: isDark ? "white" : "black"
           }}
-        ></div>
+        > Footer </div>
         <button className="button" onClick={toggleTheme}>
-          Dark Mode
+          Inner btn: Dark Mode
         </button>
       </div>
     );
