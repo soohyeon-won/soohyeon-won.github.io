@@ -64,7 +64,7 @@ export const UseRefComp = () => {
 
 export const UseRefRenderCount = () => {
     const [count, setCount] = useState(0);
-    const [renderCount, setRenderCount] = useState(0);
+    // const [renderCount, setRenderCount] = useState(0);
     const renderCountRef = useRef(1);
 
     useEffect(() => {
