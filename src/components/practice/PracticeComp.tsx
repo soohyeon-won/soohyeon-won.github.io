@@ -7,6 +7,7 @@ import UseEffectComp from "./UseEffectComp";
 import UseEffectCleanComp from "./UseEffectCleanComp";
 import { UseRefComp, UseRefDomComp, UseRefRenderCount } from "./UseRefComp";
 import { UseContextComp } from "./UseContextComp";
+import { UseMemoComp } from "./UseMemoComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => { 
@@ -80,6 +81,11 @@ const PracticeComp = () => {
 
         <h1>UseContext</h1>
         <UseContextComp></UseContextComp>
+
+        <h1>UseMemo</h1>
+        <p>렌더링 - Component함수 호출 - 모든 내부 변수 초기화</p>
+        <p>렌더링 - Memoization - 렌더링 - Component함수 호출, memoize된 값 사용</p>
+        <UseMemoComp></UseMemoComp>
     </div>
 }
 

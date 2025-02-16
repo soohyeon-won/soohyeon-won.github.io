@@ -15,6 +15,7 @@ const App = () => {
       setActiveTab(index);
     };
   
+    // 꼭 필요할 때만 적절하게 사용하는 것이 좋다
     const tabIndicatorStyle = useMemo(() => ({
       transform: `translateX(${(activeTab - 1) * 100}%)`
     }), [activeTab]);
