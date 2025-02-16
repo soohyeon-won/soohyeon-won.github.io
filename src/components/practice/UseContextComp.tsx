@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
+import { ThemeContext, UserContext } from "../../context/ThemeContext";
 
 const useTheme = () => {
   const context = useContext(ThemeContext);
@@ -9,6 +9,15 @@ const useTheme = () => {
   }
   return context;
 };
+
+const useUser = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    // <ThemeContext.Provider value={{isDark, setIsDark}}> 감싸지 않은 하위컴포넌트에서 사용 시 에러 발생
+      throw new Error("useTheme must be used within a ThemeContext.Provider");
+  }
+  return context;
+}
 
 export const UseContextComp = () => {
     // Prop Drilling
@@ -21,6 +30,7 @@ export const UseContextComp = () => {
     // 사용예제1 - 다크모드 전역 변경
 
     const [isDark, setIsDark] = useState(false); // isDark 를 실제로 필요로 하지는 않는 중간 컴포넌트
+    const [user, setUser] = useState({ userseq: 0, username: "Guest" });
 
     return (
         // 1. useState를 Props로 넘겨서 사용
@@ -33,6 +43,7 @@ export const UseContextComp = () => {
         // </div>
 
         // 2. 아래는 useContext를 이용 
+        <UserContext.Provider value={{user, setUser}}>
         <ThemeContext.Provider value={{isDark, setIsDark}}> 
         <div>
             <p>{isDark}</p>
@@ -42,6 +53,7 @@ export const UseContextComp = () => {
             <Footer isDark={isDark} setIsDark={setIsDark} />
         </div>
         </ThemeContext.Provider>
+        </UserContext.Provider>
     );
 };
 
@@ -55,6 +67,7 @@ export const UseContextComp = () => {
 const Header = () => {
 
     const { isDark } = useTheme();
+    const { user } = useUser();
     return (
         <div style={
           {backgroundColor : isDark ? 'black' : 'red',
@@ -62,12 +75,16 @@ const Header = () => {
               height: 44,
                color: isDark ? "white" : "black"
               }
-            }>Header</div>
+            }>Header user {user.username} </div>
     );
 }
 
 
-const Content = ({ isDark }: { isDark: boolean }) => (
+const Content = ({ isDark }: { isDark: boolean }) => {
+  
+  const { setUser } = useUser();
+
+  return (
     <div
       style={{
         backgroundColor: isDark ? "black" : "green",
@@ -77,8 +94,10 @@ const Content = ({ isDark }: { isDark: boolean }) => (
       }}
     >
       Content
+      <button onClick={() => setUser({userseq:1,username:'사용자1'}) }>Login</button>
     </div>
   );
+}
 
 interface FooterProps {
   isDark: boolean;
