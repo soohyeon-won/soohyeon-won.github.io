@@ -64,6 +64,7 @@ export const UseCallBackComp = () => {
 export const UseCallBackComp2 = () => {
 
     const [size, setSize] = useState(50);
+    const [isDark, setIsDark] = useState(false);
 
     const someFunction = useCallback(() => {
         console.log('someFunc size:',{size}) // 의존성 배열에 number가 없으면 number가 바뀌지 않음
@@ -76,19 +77,31 @@ export const UseCallBackComp2 = () => {
 
     // state가 바뀔때 렌더링 되면서 계속 변경됨
     // 하위 컴포넌트인 Box에도 영향을 줘서 useEffect가 계속 호출됨
-    const createBoxStyle = () => {
+    // Legacy
+    // const createBoxStyle = () => {
+    //     return {
+    //         backgroundColor: 'pink',
+    //         width: `${size}px`,  // 올바른 템플릿 리터럴 사용
+    //         height: `${size}px`,
+    //     };
+    // };
+
+    // To-be
+    const createBoxStyle = useCallback(() => {
         return {
             backgroundColor: 'pink',
             width: `${size}px`,  // 올바른 템플릿 리터럴 사용
             height: `${size}px`,
         };
-    };    
+    }, [size])
 
     return (
         <div>
             <input type="number" value={size} onChange={(input) => { setSize(Number(input.target.value))}} />
             {/* <div style={createBoxStyle()}></div> */}
+            <button onClick={() => setIsDark(!isDark)}>상위컴포넌트 Dark모드 변경</button>
             <Box createBoxStyle={createBoxStyle}></Box>
+            <div style={{background: isDark ? 'black':'white', width:'100px', height:'100px'}}></div>
         </div>
     )
 }
