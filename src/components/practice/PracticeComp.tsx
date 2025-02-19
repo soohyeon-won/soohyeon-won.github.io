@@ -9,6 +9,7 @@ import { UseRefComp, UseRefDomComp, UseRefRenderCount } from "./UseRefComp";
 import { UseContextComp } from "./UseContextComp";
 import { UseMemoComp } from "./UseMemoComp";
 import { UseCallBackComp, UseCallBackComp2, UseCallBackCompLegacy } from "./UseCallBackComp";
+import { UseReducerComp } from "./useReducer";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => { 
@@ -92,6 +93,9 @@ const PracticeComp = () => {
         <UseCallBackCompLegacy></UseCallBackCompLegacy>
         <UseCallBackComp></UseCallBackComp>
         <UseCallBackComp2></UseCallBackComp2>
+
+        <h1>UseReducer</h1>
+        <UseReducerComp></UseReducerComp>
     </div>
 }
 
