@@ -9,7 +9,7 @@ import { UseRefComp, UseRefDomComp, UseRefRenderCount } from "./UseRefComp";
 import { UseContextComp } from "./UseContextComp";
 import { UseMemoComp } from "./UseMemoComp";
 import { UseCallBackComp, UseCallBackComp2, UseCallBackCompLegacy } from "./UseCallBackComp";
-import { UseReducerComp } from "./useReducer";
+import { UseReducerComp } from "./UseReducerComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => { 
