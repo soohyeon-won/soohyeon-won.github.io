@@ -10,6 +10,7 @@ import { UseContextComp } from "./UseContextComp";
 import { UseMemoComp } from "./UseMemoComp";
 import { UseCallBackComp, UseCallBackComp2, UseCallBackCompLegacy } from "./UseCallBackComp";
 import { UseReducerComp, UseReducerComp2 } from "./UseReducerComp";
+import ReactMemoComp from "./ReactMemoComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => { 
@@ -97,6 +98,7 @@ const PracticeComp = () => {
         <h1>UseReducer</h1>
         <UseReducerComp></UseReducerComp>
         <UseReducerComp2></UseReducerComp2>
+        <ReactMemoComp></ReactMemoComp>
     </div>
 }
 
