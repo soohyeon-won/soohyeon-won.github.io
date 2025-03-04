@@ -22,12 +22,17 @@ const ReactMemoComp = () => {
         }
     }
 
+    const childCallBack = () => {
+        console.log('childCallBack 렌더링')
+        return;
+    }
+
     return (
         <div>
             <p> parent rendering count: </p>
             <button onClick = { () => setParentRC(parentRC+1) }>Parent RC+1</button>
             <ReactMemoUseMemoChildComp childProps={childProp()} />
-            <ReactMemoUseCallBackChildComp />
+            <ReactMemoUseCallBackChildComp childCallBack={childCallBack} />
         </div>
     );
 }
@@ -56,8 +61,12 @@ const ReactMemoUseMemoChildComp = ({childProps}: ChildProp) => {
     );
 }
 
+interface CallBackChildProps {
+    childCallBack: () => void;
+}
+
 // 4. Prop에 함수 주입 -> UseCallBack 변경
-const ReactMemoUseCallBackChildComp = () => {
+const ReactMemoUseCallBackChildComp = ({childCallBack}: CallBackChildProps) => {
 
     const [parentRC, setParentRC] = useState(0);
 
