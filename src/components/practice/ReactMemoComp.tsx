@@ -9,24 +9,55 @@ import React, { useState } from "react";
 // 1. 컴포넌트가 같은 props로 자주 렌더링될 때
 // 2. 컴포넌트가 렌더링 될 때 복잡한 계산을 수행할 때
 // + 컴포넌트에 UseState가 있으면 그것으로 렌더링 됨, props check만 하는 것
+// !!! ReactMemo는 오직 Props 변화에만 의존하는 최적화 방법입니다 !!!
 
 // React.memo는 고차 컴포넌트
 const ReactMemoComp = () => {
 
     const [parentRC, setParentRC] = useState(0);
 
-    
+    const childProp = () => {
+        return {
+            age: 10
+        }
+    }
 
     return (
         <div>
             <p> parent rendering count: </p>
             <button onClick = { () => setParentRC(parentRC+1) }>Parent RC+1</button>
-            <ReactMemoChildComp></ReactMemoChildComp>
+            <ReactMemoUseMemoChildComp childProps={childProp()} />
+            <ReactMemoUseCallBackChildComp />
         </div>
     );
 }
 
-const ReactMemoChildComp = () => {
+// 1. Object 생성
+interface ChildProp {
+    childProps: {
+        age: number;
+    };
+}
+
+// 2. Prop에 Object 주입 => 렌더링 결과 확인
+
+// 3. UseMemo로 Object 변경
+
+const ReactMemoUseMemoChildComp = ({childProps}: ChildProp) => {
+
+    const [parentRC, setParentRC] = useState(0);
+
+    return (
+        <div>
+            <p> child rendering count: </p>
+            <button onClick = { () => setParentRC(parentRC+1) }>Child RC+1</button>
+            <p> prop age : {childProps.age}</p>
+        </div>
+    );
+}
+
+// 4. Prop에 함수 주입 -> UseCallBack 변경
+const ReactMemoUseCallBackChildComp = () => {
 
     const [parentRC, setParentRC] = useState(0);
 
