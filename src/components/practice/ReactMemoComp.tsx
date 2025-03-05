@@ -82,7 +82,7 @@ interface CallBackChildProps {
 }
 
 // 4. Prop에 함수 주입 -> UseCallBack 변경
-const ReactMemoUseCallBackChildComp = ({childCallBack}: CallBackChildProps) => {
+const ReactMemoUseCallBackChildComp = React.memo(({childCallBack}: CallBackChildProps) => {
 
     const [childRC, setChildRC] = useState(0);
 
@@ -93,10 +93,10 @@ const ReactMemoUseCallBackChildComp = ({childCallBack}: CallBackChildProps) => {
     return (
         <div>
             <p> child useCallBack RC: {childRC} </p>
-            <button onClick = { () => setChildRC(childRC+1) }>Child RC+1</button>
-            <button onClick = {childCallBack}>childCall</button>
+            <button onClick = {() => setChildRC(childRC+1) }>Child RC+1</button>
+            <button onClick = {() => childCallBack}>childCall</button>
         </div>
     );
-}
+})
 
 export default ReactMemoComp;
