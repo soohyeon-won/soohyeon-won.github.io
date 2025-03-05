@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 // React.memo로 최적화하기 (with UseMemo, UseCallBack)
 // 리액트에서는 컴포넌트가 랜더링 될 때 하위 컴포넌트들도 랜더링됨
@@ -16,22 +16,36 @@ const ReactMemoComp = () => {
 
     const [parentRC, setParentRC] = useState(0);
 
-    const childProp = () => {
+    // const childProp = () => {
+    //     return {
+    //         age: 10
+    //     }
+    // }
+    const childProp = useMemo(() => {
+        console.log('childProp rendering')
         return {
             age: 10
         }
-    }
+    }, [])
 
-    const childCallBack = () => {
+    // const childCallBack = () => {
+    //     console.log('childCallBack 렌더링')
+    //     return;
+    // }
+    const childCallBack = useCallback(() =>{
         console.log('childCallBack 렌더링')
         return;
-    }
+    }, [])
+
+    useEffect(()=> {
+        console.log('useEffect')
+    }, [parentRC])
 
     return (
         <div>
-            <p> parent rendering count: </p>
+            <p> parent rendering count: {parentRC} </p>
             <button onClick = { () => setParentRC(parentRC+1) }>Parent RC+1</button>
-            <ReactMemoUseMemoChildComp childProps={childProp()} />
+            <ReactMemoUseMemoChildComp prop={childProp} />
             <ReactMemoUseCallBackChildComp childCallBack={childCallBack} />
         </div>
     );
@@ -39,27 +53,29 @@ const ReactMemoComp = () => {
 
 // 1. Object 생성
 interface ChildProp {
-    childProps: {
-        age: number;
-    };
+    age: number;
 }
 
 // 2. Prop에 Object 주입 => 렌더링 결과 확인
 
 // 3. UseMemo로 Object 변경
 
-const ReactMemoUseMemoChildComp = ({childProps}: ChildProp) => {
+const ReactMemoUseMemoChildComp = React.memo(({prop}: {prop: ChildProp}) => {
 
-    const [parentRC, setParentRC] = useState(0);
+    const [childRC, setChildRC] = useState(0);
+
+    useEffect(()=> {
+        console.log('useMemo child comp render')
+    })
 
     return (
         <div>
-            <p> child rendering count: </p>
-            <button onClick = { () => setParentRC(parentRC+1) }>Child RC+1</button>
-            <p> prop age : {childProps.age}</p>
+            <p> child useMemo RC: {childRC} </p>
+            <button onClick = { () => setChildRC(childRC+1) }>Child RC+1</button>
+            <p> prop age : {prop.age}</p>
         </div>
     );
-}
+});
 
 interface CallBackChildProps {
     childCallBack: () => void;
@@ -68,12 +84,17 @@ interface CallBackChildProps {
 // 4. Prop에 함수 주입 -> UseCallBack 변경
 const ReactMemoUseCallBackChildComp = ({childCallBack}: CallBackChildProps) => {
 
-    const [parentRC, setParentRC] = useState(0);
+    const [childRC, setChildRC] = useState(0);
+
+    useEffect(()=> {
+        console.log('useCallback child comp render')
+    })
 
     return (
         <div>
-            <p> child rendering count: </p>
-            <button onClick = { () => setParentRC(parentRC+1) }>Child RC+1</button>
+            <p> child useCallBack RC: {childRC} </p>
+            <button onClick = { () => setChildRC(childRC+1) }>Child RC+1</button>
+            <button onClick = {childCallBack}>childCall</button>
         </div>
     );
 }

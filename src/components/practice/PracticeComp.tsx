@@ -98,6 +98,8 @@ const PracticeComp = () => {
         <h1>UseReducer</h1>
         <UseReducerComp></UseReducerComp>
         <UseReducerComp2></UseReducerComp2>
+
+        <h1>ReactMemo</h1>
         <ReactMemoComp></ReactMemoComp>
     </div>
 }
