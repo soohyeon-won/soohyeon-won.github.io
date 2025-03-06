@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react"
 
+// 함수 자체를 메모이제이션 (재생성 방지)
 export const UseCallBackCompLegacy = () => {
 
     // UseCallBack
@@ -16,6 +17,7 @@ export const UseCallBackCompLegacy = () => {
     const [number, setNumber] = useState(0);
 
     // warning 오류로 인해 아래 useCallBack 함수로 대체
+    // 아래 함수처럼 useCallback 사용하지 않으면 렌더링 되면 계속해서 호출됨.
     // const someFunction = () => {
     //     console.log('someFunc number:',{number})
     //     return;
@@ -40,6 +42,7 @@ export const UseCallBackCompLegacy = () => {
     )
 }
 
+// 예제1 - 기본적인 useCallback 사용하기
 export const UseCallBackComp = () => {
 
     const [number, setNumber] = useState(0);
@@ -47,7 +50,7 @@ export const UseCallBackComp = () => {
     const someFunction2 = useCallback(() => {
         console.log('someFunc number:',{number}) // 의존성 배열에 number가 없으면 number가 바뀌지 않음
         return;
-    }, [number]);
+    }, [number]); // 의존성 배열이 비어있으면 warning 메시지가 발생됨
 
     useEffect(() => {
         console.log("someFunction changed")
@@ -61,13 +64,14 @@ export const UseCallBackComp = () => {
     )
 }
 
+// 예제2 - 객체를 useCallback을 사용해서 하위 컴포넌트에 전달 > 하위 컴포넌트의 state를 변경
 export const UseCallBackComp2 = () => {
 
     const [size, setSize] = useState(50);
     const [isDark, setIsDark] = useState(false);
 
     const someFunction = useCallback(() => {
-        console.log('someFunc size:',{size}) // 의존성 배열에 number가 없으면 number가 바뀌지 않음
+        console.log('someFunc size:',{size}) 
         return;
     }, [size]);
 
