@@ -11,6 +11,7 @@ import { UseMemoComp } from "./UseMemoComp";
 import { UseCallBackComp, UseCallBackComp2, UseCallBackCompLegacy } from "./UseCallBackComp";
 import { UseReducerComp, UseReducerComp2 } from "./UseReducerComp";
 import ReactMemoComp from "./ReactMemoComp";
+import { CustomHookComp } from "./CustomHooksComp";
 
 // const 함수이름 = (매개변수) => { 함수의 로직 };
 const PracticeComp = () => { 
@@ -101,6 +102,9 @@ const PracticeComp = () => {
 
         <h1>ReactMemo</h1>
         <ReactMemoComp></ReactMemoComp>
+
+        <h1>Custom Hooks</h1>
+        <CustomHookComp></CustomHookComp>
     </div>
 }
 
