@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react"
 
+// 특정 연산 결과를 메모이제이션하여 불필요한 연산 방지
+// 연산 비용이 높은 함수 실행 결과를 저장하여 성능 최적화
 export const UseMemoComp = () => {
 
     const [num, setNumber] = useState(0);
