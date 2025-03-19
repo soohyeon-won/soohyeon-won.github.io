@@ -1,8 +1,16 @@
-import React, { useState, ComponentType } from "react";
+/// Shift + Alt + F : 코드정렬
+/// cmd+b : 파일탐색기 토글
+/// cmd+B : 빌드 스크립트
+/// cmd+1,2,3 : 에디터 열기, 이동하기
+/// cmd+j : 하단 창 토글
+/// cmd+P : shell 명령어 넣기
+/// cmd+D : 동일 값 다중커서
+
+import React, { useState, ComponentType, useRef } from "react";
 import './PracticeComp.css';
 
 // 컴포넌트 임포트
-import StatePracticeComp from "./StatePracticeComp";
+import StatePracticeComp, { StatePractticeComp2, StatePractticeComp3, StatePractticeComp4 } from "./StatePracticeComp";
 import UploadComp from "./UploadComp";
 import UseEffectComp from "./UseEffectComp";
 import UseEffectCleanComp from "./UseEffectCleanComp";
@@ -37,67 +45,29 @@ const Card = ({ title, children }: { title: string; children: React.ReactNode })
 const Section = ({ title, cards }: SectionData) => (
   <div>
     <h1 className="section-title">{title}</h1>
-    <div className="card-container">
-      {cards.map(({ title, Component }, index) => (
-        <Card key={index} title={title}>
-          <Component />
-        </Card>
-      ))}
-    </div>
+    <HorizontalScroll spacer={16}>
+        {
+          cards.map(({ title, Component }, index) => (
+            <Card key={index} title={title}>
+              <Component />
+            </Card>
+          ))
+        }
+      </HorizontalScroll>
   </div>
 );
 
 const PracticeComp = () => {
-  // 상태 관리 (기존과 동일)
-  const [isOn, setToggle] = useState(true);
-  const toggleBtn = () => setToggle(!isOn);
-
-  const [price, setPrice] = useState(0);
-  const incrementPrice = (price: number) => {
-    setPrice((prevValue) => prevValue + price);
-  };
-
-  const [like, setLike] = useState(0);
-  const [titleText, setText] = useState("placeholder");
-  const setTitle = (text: string) => {
-    setText(text);
-  };
-  const [savedText, setSavedText] = useState("");
-  const setSavedTitle = () => setSavedText(titleText);
-
-  const [titles, setTitles] = useState(['test1', 'test2']);
-
-  // Modal 컴포넌트
-  function Modal() {
-    return (
-      <>
-        <div>
-          <h4>
-            {titles[0]}{" "}
-            <span
-              onClick={() => {
-                setLike(like + 1);
-                let copyTitles = [...titles];
-                copyTitles[0] = 'A';
-                setTitles(copyTitles);
-              }}
-            >
-              좋아요👍
-            </span>{" "}
-            {like}
-          </h4>
-          <h4>{titles[1]}</h4>
-        </div>
-      </>
-    );
-  }
 
   // 섹션 데이터 정의
   const sections: SectionData[] = [
     {
       title: "UseState Examples",
       cards: [
-        { title: "State Practice", Component: StatePracticeComp },
+        { title: "useState ex1", Component: StatePracticeComp },
+        { title: "useState ex2", Component: StatePractticeComp2 },
+        { title: "useState ex3", Component: StatePractticeComp3 },
+        { title: "useState ex4", Component: StatePractticeComp4 },
         { title: "Upload Component", Component: UploadComp },
       ],
     },
@@ -159,32 +129,6 @@ const PracticeComp = () => {
 
   return (
     <div className="practice-container">
-      {/* 기본 예제들 */}
-      <div className="basic-section">
-        <p>1. useState를 이용한 Toggle버튼</p>
-        <button onClick={toggleBtn}>{isOn ? "ON" : "OFF"}</button>
-      </div>
-
-      <div className="basic-section">
-        <p>2. 버튼에 있는 값 input으로 옮기기</p>
-        <button onClick={() => incrementPrice(10)}>10+</button>
-        <button onClick={() => incrementPrice(50)}>50+</button>
-        <input value={price} readOnly />
-      </div>
-
-      <div className="basic-section">
-        <p>3. input Text 저장하기</p>
-        <input onChange={(input) => setTitle(input.target.value)} />
-        <p>{titleText}</p>
-        <button onClick={setSavedTitle}>저장</button>
-        <p>{savedText}</p>
-      </div>
-
-      <div className="basic-section">
-        <h1>Modal Example</h1>
-        <Modal />
-      </div>
-
       {/* 동적 섹션 렌더링 */}
       {sections.map((section, index) => (
         <Section key={index} {...section} />
@@ -194,3 +138,11 @@ const PracticeComp = () => {
 };
 
 export default PracticeComp;
+
+const HorizontalScroll = ({ children, spacer = 10 }: { children: React.ReactNode; spacer?: number }) => {
+  return (
+    <div className="scroll-container" style={{ gap: `${spacer}px`, padding: `${spacer}px` }}>
+      {children}
+    </div>
+  );
+};

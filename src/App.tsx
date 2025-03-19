@@ -7,7 +7,7 @@ import PracticeComp from "./components/practice/PracticeComp";
 import Tab from "./components/Tab";
 
 const App = () => {
-    const [activeTab, setActiveTab] = useState<number>(1);
+    const [activeTab, setActiveTab] = useState(1);
 
     let tab1Title = 'study'
   
