@@ -6,7 +6,7 @@
 /// cmd+P : shell 명령어 넣기
 /// cmd+D : 동일 값 다중커서
 
-import React, { useState, ComponentType, useRef } from "react";
+import React, { ComponentType } from "react";
 import './PracticeComp.css';
 
 // 컴포넌트 임포트
@@ -20,7 +20,7 @@ import { UseMemoComp } from "./UseMemoComp";
 import { UseCallBackComp, UseCallBackComp2, UseCallBackCompLegacy } from "./UseCallBackComp";
 import { UseReducerComp, UseReducerComp2 } from "./UseReducerComp";
 import ReactMemoComp from "./ReactMemoComp";
-import { CustomHookComp } from "./CustomHooksComp";
+import { CustomHookComp, UseFetchComp } from "./CustomHooksComp";
 
 // 타입 정의
 interface CardData {
@@ -123,6 +123,7 @@ const PracticeComp = () => {
       title: "Custom Hooks Examples",
       cards: [
         { title: "Custom Hooks", Component: CustomHookComp },
+        { title: "UseFetchComp", Component: UseFetchComp },
       ],
     },
   ];
