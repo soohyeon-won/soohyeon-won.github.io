@@ -57,7 +57,7 @@ export const UseFetchComp = () => {
 
     return (
         <div>
-            {Array.isArray(data) && data.length > 0 ? (
+            {Array.isArray(data) && data.length > 5 ? (
                 <ul>
                     {data.slice(0, 5).map(item => (
                         <li key={item.id}>{item.name || item.title}</li>
