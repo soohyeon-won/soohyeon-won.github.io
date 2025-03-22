@@ -37,9 +37,7 @@ export const UseIdComp = () => {
         리액트를 사용하면 querySelector를 쓰는게 아니라 useRef를 써야하기 때문임
         */}
             <button id="btn">버튼</button>
-            <input id={id} ref={ref}>
-                input
-            </input>
+            <input id={id} ref={ref}></input>
 
             {/* 
             🎯 Q. `Math.random()` 같은 함수도 있는데, 왜 `useId`를 사용할까? 
