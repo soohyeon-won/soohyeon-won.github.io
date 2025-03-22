@@ -21,6 +21,7 @@ import { UseCallBackComp, UseCallBackComp2, UseCallBackCompLegacy } from "./UseC
 import { UseReducerComp, UseReducerComp2 } from "./UseReducerComp";
 import ReactMemoComp from "./ReactMemoComp";
 import { CustomHookComp, UseFetchComp } from "./CustomHooksComp";
+import { UseIdComp } from "./UseIdComp";
 
 // 타입 정의
 interface CardData {
@@ -124,6 +125,12 @@ const PracticeComp = () => {
       cards: [
         { title: "Custom Hooks", Component: CustomHookComp },
         { title: "UseFetchComp", Component: UseFetchComp },
+      ],
+    },
+    {
+      title: "useId",
+      cards: [
+        { title: "useId", Component: UseIdComp },
       ],
     },
   ];
