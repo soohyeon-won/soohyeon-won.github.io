@@ -22,6 +22,7 @@ import { UseReducerComp, UseReducerComp2 } from "./UseReducerComp";
 import ReactMemoComp from "./ReactMemoComp";
 import { CustomHookComp, UseFetchComp } from "./CustomHooksComp";
 import { UseIdComp } from "./UseIdComp";
+import { UseLayoutEffectComp } from "./UseLayoutEffect";
 
 // 타입 정의
 interface CardData {
@@ -133,6 +134,12 @@ const PracticeComp = () => {
         { title: "useId", Component: UseIdComp },
       ],
     },
+    {
+      title: "useLayoutEffect",
+      cards: [
+        { title: "UseLayoutEffectComp", Component: UseLayoutEffectComp },
+      ],
+    }
   ];
 
   return (
