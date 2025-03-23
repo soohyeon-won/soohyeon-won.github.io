@@ -23,7 +23,7 @@ import ReactMemoComp from "./ReactMemoComp";
 import { CustomHookComp, UseFetchComp } from "./CustomHooksComp";
 import { UseIdComp } from "./UseIdComp";
 import { UseLayoutEffectComp } from "./UseLayoutEffect";
-import { UseDebounceComp } from "./UseDebounceComp";
+import { UseDebounceComp, UseDebounceCompCustomHook } from "./UseDebounceComp";
 
 // 타입 정의
 interface CardData {
@@ -145,6 +145,7 @@ const PracticeComp = () => {
       title: "Debounce",
       cards: [
         { title: "UseDebounceComp", Component: UseDebounceComp },
+        { title: "UseDebounceComp", Component: UseDebounceCompCustomHook },
       ],
     }
   ];

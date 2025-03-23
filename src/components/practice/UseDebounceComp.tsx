@@ -60,3 +60,54 @@ export const UseDebounceComp = () => {
         </div>
     );
 };
+
+
+export const UseDebounceCompCustomHook = () => {
+
+    const [input, setInput] = useState("");
+    const debouncedInput = useDebounce(input, 300);
+    // interface로 교체
+    const [result, setResult] = useState<User[]>([]);
+
+    function fetchDataFromServer(value: string) : User[] {
+        console.log("fetchDataFromServer 호출", value);
+        return users.filter((user) => user.name.startsWith(value));
+    }
+
+    useEffect(() => {
+        const users = fetchDataFromServer(debouncedInput);
+        setResult(users);
+    }, [debouncedInput])
+
+    return (
+        <div>
+            <input 
+                placeholder="검색어 입력"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+            ></input>
+            <ul>
+                {result && result.map(user => (
+                    <li key={user.name}>{user.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+// debounce custom hook
+export function useDebounce(value: string, delay: number) {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+
+        return () => {
+            clearTimeout(handler);
+        }
+    }, [value, delay]);
+
+    return debouncedValue
+}
