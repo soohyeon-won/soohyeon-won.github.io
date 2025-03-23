@@ -3,6 +3,7 @@
 // 마지막 이벤트 발생 후 아무것도 발생하지 않을 때 delay 이후 함수 호출
 
 import React, { useEffect, useState } from "react";
+import { useDebounce } from "./hooks/UseDebounce";
 
 const users: User[] = [
     { name: "A", age: "16" },
@@ -94,20 +95,3 @@ export const UseDebounceCompCustomHook = () => {
         </div>
     );
 };
-
-// debounce custom hook
-export function useDebounce(value: string, delay: number) {
-    const [debouncedValue, setDebouncedValue] = useState(value);
-
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedValue(value);
-        }, delay);
-
-        return () => {
-            clearTimeout(handler);
-        }
-    }, [value, delay]);
-
-    return debouncedValue
-}
