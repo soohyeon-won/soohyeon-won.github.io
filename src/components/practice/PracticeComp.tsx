@@ -24,7 +24,7 @@ import { CustomHookComp, UseFetchComp } from "./CustomHooksComp";
 import { UseIdComp } from "./UseIdComp";
 import { UseLayoutEffectComp } from "./UseLayoutEffect";
 import { UseDebounceComp, UseDebounceCompCustomHook } from "./UseDebounceComp";
-import { UseThrottleComp } from "./UseThrottleComp";
+import { UseThrottleComp, UseThrottleCustomHookComp } from "./UseThrottleComp";
 
 // 타입 정의
 interface CardData {
@@ -152,7 +152,8 @@ const PracticeComp = () => {
     {
       title: "Throttle",
       cards: [
-        { title: "UseThrottleComp", Component: UseThrottleComp }
+        { title: "UseThrottleComp", Component: UseThrottleComp },
+        { title: "UseThrottleComp", Component: UseThrottleCustomHookComp }
       ],
     }
   ];
