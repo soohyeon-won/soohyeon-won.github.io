@@ -1,5 +1,5 @@
 import React, { ComponentType } from "react";
-import { HorizontalScroll, Section } from "../practice/PracticeComp";
+import { Section } from "../practice/PracticeComp";
 import { RecoilCounterTutorialComp } from "./RecoilCounterTutorialComp";
 
 interface CardData {
