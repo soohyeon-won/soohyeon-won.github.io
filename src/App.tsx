@@ -5,6 +5,7 @@ import TopicsList from "./components/TopicsList";
 import "./styles/App.css";
 import PracticeComp from "./components/practice/PracticeComp";
 import Tab from "./components/Tab";
+import { RecoilMainComp } from "./components/Recoil/RecoilMainComp";
 
 const App = () => {
     const [activeTab, setActiveTab] = useState(1);
@@ -35,6 +36,12 @@ const App = () => {
             isActive={activeTab === 2} 
             onClick={() => handleTabClick(2)} 
           />
+          <Tab 
+            to="/recoil" 
+            label="Recoil" 
+            isActive={activeTab === 3} 
+            onClick={() => handleTabClick(3)} 
+          />
           <div className="tab-indicator" style={tabIndicatorStyle}></div>
         </div>
   
@@ -42,6 +49,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/study" replace />} />
           <Route path="/study" element={<TopicsList />} />
           <Route path="/practice" element={<PracticeComp />} />
+          <Route path="/recoil" element={<RecoilMainComp />} />
         </Routes>
       </div>
     );
