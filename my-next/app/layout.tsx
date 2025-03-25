@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+{/* layouyt.tsx 안에 page.tsx가 있는 구조임 */}
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
