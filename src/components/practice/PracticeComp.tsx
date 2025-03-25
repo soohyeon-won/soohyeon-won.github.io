@@ -46,7 +46,7 @@ const Card = ({ title, children }: { title: string; children: React.ReactNode })
 );
 
 // Section 컴포넌트 (재사용 가능)
-const Section = ({ title, cards }: SectionData) => (
+export const Section = ({ title, cards }: SectionData) => (
   <div>
     <h1 className="section-title">{title}</h1>
     <HorizontalScroll spacer={16}>
@@ -170,7 +170,7 @@ const PracticeComp = () => {
 
 export default PracticeComp;
 
-const HorizontalScroll = ({ children, spacer = 10 }: { children: React.ReactNode; spacer?: number }) => {
+export const HorizontalScroll = ({ children, spacer = 10 }: { children: React.ReactNode; spacer?: number }) => {
   return (
     <div className="scroll-container" style={{ gap: `${spacer}px`, padding: `${spacer}px` }}>
       {children}
