@@ -50,11 +50,7 @@ const App = () => {
         <Route path="/" element={<Navigate to="/study" replace />} />
         <Route path="/study" element={<TopicsList />} />
         <Route path="/practice" element={<PracticeComp />} />
-        <Route path="/recoil" element={
-          <RecoilRoot>
-            <RecoilMainComp />
-          </RecoilRoot>
-        } />
+        <Route path="/recoil" element={ <RecoilMainComp /> } />
       </Routes>
     </div>
   );
