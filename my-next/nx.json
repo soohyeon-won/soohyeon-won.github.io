@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "nxCloudId": "67e3c8ac3050ae4e8ffb63c9",
+  "targets": {
+    "dev": {
+      "executor": "@nx/next:dev-server",
+      "options": {
+        "port": 3000
+      }
+    }
+  }
+}
