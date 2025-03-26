@@ -1,0 +1,60 @@
+/* PracticeComp.css */
+.practice-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    margin: 40px 0 20px;
+    color: #333;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: calc(33.33% - 14px);
+    box-sizing: border-box;
+  }
+  
+  .basic-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 1024px) {
+    .card {
+      width: calc(50% - 10px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      width: 100%;
+    }
+  }
+  .scroll-container {
+    overflow-x: auto;  /* 가로 스크롤 활성화 */
+    white-space: nowrap; /* 내부 요소가 한 줄로 배치됨 */
+    display: flex;
+    
+    /* 스크롤바 숨기기 
+    scrollbar-width: none; /* Firefox
+    -ms-overflow-style: none; /* IE/Edge
+    */
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
