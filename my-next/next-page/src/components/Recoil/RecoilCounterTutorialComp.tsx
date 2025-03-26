@@ -60,8 +60,6 @@ function DisplayCounter() {
     */}
     const [count] = useRecoilState(countState);
 
-    console.log('DisplayCounter render');
-
     return (
         <div>
             <p>현재 카운터 값은 {count} 입니다.</p>

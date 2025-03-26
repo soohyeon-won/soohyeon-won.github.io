@@ -6,7 +6,7 @@ import styled from 'styled-components';
 interface TabProps {
     to: string;
     label: string;
-    isActive: boolean;
+    $isActive: boolean;
     onClick: () => void;
   }
 
@@ -26,9 +26,9 @@ interface TabProps {
 
 // React.memo 컴포넌트 최적화(캐싱)
 // 항목이 자주 변경되지 않는 경우 사용
-const Tab = React.memo(({ to, label, isActive, onClick } : TabProps) => (
+const Tab = React.memo(({ to, label, $isActive, onClick } : TabProps) => (
     //  <Link href={"/"+to}>
-        <StyledTapButton isActive = {isActive} onClick={onClick}>
+        <StyledTapButton isActive = {$isActive} onClick={onClick}>
             {label}
         </StyledTapButton>
     // </Link>
