@@ -1,11 +1,8 @@
 'use client';
-
-// src/TopicDetail.tsx
 import React from 'react';
 import '../styles/TopicDetail.css';
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-// import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism'; // 원하는 테마로 변경 가능
 import 'prismjs/themes/prism-tomorrow.css'; 
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 // 섹션의 타입 정의
 interface Section {
@@ -32,7 +29,7 @@ const TopicDetail = ({ title, sections }: TopicDetailProps) => {
             <p key={idx}>{line}</p>
           ))}
           {section.code && (  // section.code가 있을 때만 렌더링
-            <SyntaxHighlighter language="typescript" style={solarizedlight}>
+            <SyntaxHighlighter language="typescript">
               {section.code}
             </SyntaxHighlighter>
           )}
