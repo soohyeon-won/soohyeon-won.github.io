@@ -1,7 +1,6 @@
+import Link from "next/link";
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
-
 
 interface TabProps {
     to: string;
@@ -27,11 +26,11 @@ interface TabProps {
 // React.memo 컴포넌트 최적화(캐싱)
 // 항목이 자주 변경되지 않는 경우 사용
 const Tab = React.memo(({ to, label, isActive, onClick } : TabProps) => (
-    <Link to={to}>
+    //  <Link href={"/"+to}>
         <StyledTapButton isActive = {isActive} onClick={onClick}>
             {label}
         </StyledTapButton>
-    </Link>
+    // </Link>
   ));
   
 export default Tab;

@@ -8,6 +8,7 @@ import "./styles/App.css";
 import PracticeComp from "./components/practice/PracticeComp";
 import Tab from "./components/Tab";
 import { RecoilMainComp } from "./components/recoil/RecoilMainComp";
+import { TopicListPage } from "./page";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -47,21 +48,16 @@ const App = () => {
         <div className="tab-indicator" style={tabIndicatorStyle}></div>
       </div>
 
-      <Routes>
-        <Route path="/" element={<Navigate to="/study" replace />} />
-        <Route path="/study" element={<TopicsList />} />
-        <Route path="/practice" element={<PracticeComp />} />
-        <Route path="/recoil" element={ <RecoilMainComp /> } />
-      </Routes>
+      {activeTab === 1 && <TopicsList />}
+      {activeTab === 2 && <PracticeComp />}
+      {activeTab === 3 && <RecoilMainComp />}
     </div>
   );
 };
 
 const RootApp = () => {
   return (
-    <Router>
-      <App />
-    </Router>
+    <App />
   );
 };
 
