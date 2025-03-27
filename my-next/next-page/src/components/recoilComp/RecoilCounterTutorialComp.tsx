@@ -2,8 +2,8 @@
 
 import React from "react";
 // import { useState } from "react";
-import { countState } from "./Atom";
 import { useRecoilState } from "recoil";
+import { countState } from "./CountState";
 
 // function LegacyCounter(props: { count: number, onUp: () => void }) {
 
@@ -39,14 +39,14 @@ import { useRecoilState } from "recoil";
 
 function Counter() {
 
-    const [count, setCount] = useRecoilState(countState);
+    // const [count, setCount] = useRecoilState(countState);
 
     console.log('Counter render');
 
     return (
         <div>
-            <p>현재 카운터 값은 {count} 입니다.</p>
-            <button onClick={() => setCount(count+1)}>+1</button>
+            {/* <p>현재 카운터 값은 {count} 입니다.</p>
+            <button onClick={() => setCount(count+1)}>+1</button> */}
         </div>
     );
 };
@@ -67,15 +67,15 @@ function DisplayCounter() {
     );
 };
 
+/* 
+상태가 많아지면, Props Drilling이 발생됨 중간 컴포넌트들은 관련없는데 props를 더 받아야 하는 문제 발생, 렌더링도 다시 일어남 
+*/
 export const RecoilCounterTutorialComp = () => {
 
     return (
         <div>
-            {/* 상태가 많아지면, Props Drilling이 발생됨 중간 컴포넌트들은 관련없는데 props를 더 받아야 하는 문제 발생, 렌더링도 다시 일어남 */}
-            {/* <Counter />
-            <DisplayCounter /> */}
+            <DisplayCounter />
             <Counter />
-            {/* <DisplayCounter></DisplayCounter> */}
         </div>
     );
 }

@@ -1,10 +1,10 @@
-/// Shift + Alt + F : 코드정렬
-/// cmd+b : 파일탐색기 토글
-/// cmd+B : 빌드 스크립트
-/// cmd+1,2,3 : 에디터 열기, 이동하기
-/// cmd+j : 하단 창 토글
-/// cmd+P : shell 명령어 넣기
-/// cmd+D : 동일 값 다중커서
+//  Shift + Alt + F : 코드정렬
+//  cmd+b : 파일탐색기 토글
+//  cmd+B : 빌드 스크립트
+//  cmd+1,2,3 : 에디터 열기, 이동하기
+//  cmd+j : 하단 창 토글
+//  cmd+P : shell 명령어 넣기
+//  cmd+D : 동일 값 다중커서
 
 import React, { ComponentType } from "react";
 import './PracticeComp.css';

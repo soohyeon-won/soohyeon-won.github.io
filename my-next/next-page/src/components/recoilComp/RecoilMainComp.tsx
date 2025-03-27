@@ -2,8 +2,8 @@
 
 import React, { ComponentType } from "react";
 import { Section } from "../practice/PracticeComp";
-import { atom, RecoilRoot } from "recoil";
 import { RecoilCounterTutorialComp } from "./RecoilCounterTutorialComp";
+import { RecoilState } from "recoil";
 
 interface CardData {
   title: string;
@@ -18,12 +18,7 @@ interface SectionData {
 export const RecoilMainComp = () => {
 
   return (
-    <div>
-      <RecoilRoot>
-        {/* Recoil의 전역 상태는 감싼 영역에서 유효하게 됨. */}
-        <MainComp />
-      </RecoilRoot>
-    </div>
+    <MainComp />
   );
 };
 

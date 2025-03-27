@@ -1,53 +1,49 @@
 'use client';
 
-import { useMemo, useState } from "react";
+import { JSX, useMemo, useState } from "react";
 import Tab from "../Tab";
 import PracticeComp from "../practice/PracticeComp";
-import { RecoilMainComp } from "../recoil/RecoilMainComp";
+import { RecoilMainComp } from "../recoilComp/RecoilMainComp";
 import TopicsList from "../TopicsList";
+import { RecoilRoot } from "recoil";
+import { NextPracticeComp } from "../next/NextPracticeComp";
 
 export const NavigationTabView = () => {
 
-    const [activeTab, setActiveTab] = useState(1);
-
-    let tab1Title = 'study'
+    const [activeTab, setActiveTab] = useState<number>(1);
 
     const handleTabClick = (index: number) => {
         setActiveTab(index);
     };
 
-    // 꼭 필요할 때만 적절하게 사용하는 것이 좋다
-    const tabIndicatorStyle = useMemo(() => ({
-        transform: `translateX(${(activeTab - 1) * 100}%)`
-    }), [activeTab]);
+    interface TabChildModel {
+        title: string;
+        Component: JSX.Element;
+    }
+    
+    const tabList: TabChildModel[] = useMemo(() => {
+        return [
+            { title: 'study', Component: <TopicsList /> },
+            { title: 'practice', Component: <PracticeComp /> },
+            { title: 'next', Component: <NextPracticeComp /> },
+            // { title: 'recoil', Component: <RecoilRoot><RecoilMainComp /></RecoilRoot> }
+        ];
+    }, []);
 
     return (
         <div className="app-container">
             <div className="top-tabs">
-                <Tab
-                    to="/study"
-                    label={tab1Title}
-                    isActive={activeTab === 1}
-                    onClick={() => handleTabClick(1)}
-                />
-                <Tab
-                    to="/practice"
-                    label="Practice"
-                    isActive={activeTab === 2}
-                    onClick={() => handleTabClick(2)}
-                />
-                <Tab
-                    to="/recoil"
-                    label="Recoil"
-                    isActive={activeTab === 3}
-                    onClick={() => handleTabClick(3)}
-                />
-                <div className="tab-indicator" style={tabIndicatorStyle}></div>
+               {tabList.map((tab, index) => (
+                   <Tab
+                       key={index}
+                       to={tab.title}
+                       label={tab.title}
+                       $isActive={index === activeTab}
+                       onClick={() => handleTabClick(index)}
+                   />
+               ))}
             </div>
-
-            {activeTab === 1 && <TopicsList />}
-            {activeTab === 2 && <PracticeComp />}
-            {activeTab === 3 && <RecoilMainComp />}
+            {tabList.at(activeTab)?.Component}
         </div>
     );
 };

@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import '../styles/TopicDetail.css';
 import 'prismjs/themes/prism-tomorrow.css'; 
