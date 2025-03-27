@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useState } from "react";
-import { useThrottle } from "./hooks/UseThrottle";
+import { useThrottle } from "./hooks/useThrottle";
 
 // Throttle: 일정 시간 동안 한 번만 실행되도록 하는 것
 export const UseThrottleComp = () => {
