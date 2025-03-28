@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Control } from "@/next-page/src/components/next/Control";
+import { Topic } from "@/next-page/src/components/data";
 
 {
   /* 
@@ -35,6 +36,7 @@ export default async function RootLayout({
   // 서버에서 실행 됨
   // Javascript disable처리해도 데이터가 노출됨
   // 정적 페이지 로드가 되었기 떄문
+  // 서버 컴포넌트에서만 process.env 사용가능
   console.log('process.env.API_URL',process.env.API_URL);
   const response = await fetch(process.env.API_URL+'/topics');
   const topics = await response.json();
@@ -42,7 +44,7 @@ export default async function RootLayout({
   return (
     <html>
       <body>
-        {topics.map((topic: any) => (
+        {topics.map((topic: Topic) => (
           <div key={topic.id}>
             <h2>{topic.title}</h2>
             <p>{topic.content}</p>
