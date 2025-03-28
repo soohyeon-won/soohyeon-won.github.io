@@ -1,0 +1,309 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.6.4",
+  "pathMappings": {
+    "@/*": [
+      "./*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [],
+    "projectFileMap": {
+      "my-next": [
+        {
+          "file": ".gitignore",
+          "hash": "7964641428553713301"
+        },
+        {
+          "file": "README.md",
+          "hash": "10766794746169900117"
+        },
+        {
+          "file": "app/favicon.ico",
+          "hash": "9157999678830540297"
+        },
+        {
+          "file": "app/globals.css",
+          "hash": "13803416617225302536"
+        },
+        {
+          "file": "app/layout.tsx",
+          "hash": "55632430232787334"
+        },
+        {
+          "file": "app/page.tsx",
+          "hash": "15183332315649885452"
+        },
+        {
+          "file": "app/study/page.tsx",
+          "hash": "15457876332293482492"
+        },
+        {
+          "file": "eslint.config.mjs",
+          "hash": "11349616980964601162"
+        },
+        {
+          "file": "next-page/src/App.test.js",
+          "hash": "14776661775854159295"
+        },
+        {
+          "file": "next-page/src/App.tsx",
+          "hash": "7517220204561109694"
+        },
+        {
+          "file": "next-page/src/components/Tab.tsx",
+          "hash": "15901783349709093965"
+        },
+        {
+          "file": "next-page/src/components/TopicDetail.tsx",
+          "hash": "2818931162106971683"
+        },
+        {
+          "file": "next-page/src/components/TopicPage.tsx",
+          "hash": "983026297203855505"
+        },
+        {
+          "file": "next-page/src/components/TopicsList.tsx",
+          "hash": "15385009005246552826"
+        },
+        {
+          "file": "next-page/src/components/base/NavigationTabView.tsx",
+          "hash": "17370911288198819220"
+        },
+        {
+          "file": "next-page/src/components/data.ts",
+          "hash": "273248340935701261"
+        },
+        {
+          "file": "next-page/src/components/data/javascript.ts",
+          "hash": "1608035358286525255"
+        },
+        {
+          "file": "next-page/src/components/data/reactBasics.ts",
+          "hash": "18212569617283848814"
+        },
+        {
+          "file": "next-page/src/components/data/reactHooks.ts",
+          "hash": "11627654413624453102"
+        },
+        {
+          "file": "next-page/src/components/data/routing.ts",
+          "hash": "9060674365199196503"
+        },
+        {
+          "file": "next-page/src/components/data/stateManagement.ts",
+          "hash": "5356886651823163966"
+        },
+        {
+          "file": "next-page/src/components/data/testing.ts",
+          "hash": "13447071227514296198"
+        },
+        {
+          "file": "next-page/src/components/practice/ComponentsBtn.tsx",
+          "hash": "1709790941593229348"
+        },
+        {
+          "file": "next-page/src/components/practice/ComponentsLifecycle.tsx",
+          "hash": "4680045037490026717"
+        },
+        {
+          "file": "next-page/src/components/practice/CustomHooksComp.tsx",
+          "hash": "8524585416740232235"
+        },
+        {
+          "file": "next-page/src/components/practice/PracticeComp.css",
+          "hash": "9034299011464114380"
+        },
+        {
+          "file": "next-page/src/components/practice/PracticeComp.tsx",
+          "hash": "3593684907877855275"
+        },
+        {
+          "file": "next-page/src/components/practice/ReactMemoComp.tsx",
+          "hash": "2581905211101207880"
+        },
+        {
+          "file": "next-page/src/components/practice/StatePracticeComp.tsx",
+          "hash": "3934793857542730536"
+        },
+        {
+          "file": "next-page/src/components/practice/StudyCustomHooks.tsx",
+          "hash": "14427315993186285967"
+        },
+        {
+          "file": "next-page/src/components/practice/UploadComp.tsx",
+          "hash": "6844823103965576569"
+        },
+        {
+          "file": "next-page/src/components/practice/UseCallBackComp.tsx",
+          "hash": "16982188244822339390"
+        },
+        {
+          "file": "next-page/src/components/practice/UseContextComp.tsx",
+          "hash": "15069927006819893785"
+        },
+        {
+          "file": "next-page/src/components/practice/UseDebounceComp.tsx",
+          "hash": "9232822326134207041"
+        },
+        {
+          "file": "next-page/src/components/practice/UseEffectCleanComp.tsx",
+          "hash": "1462467937120309145"
+        },
+        {
+          "file": "next-page/src/components/practice/UseEffectComp.tsx",
+          "hash": "14619916688195572018"
+        },
+        {
+          "file": "next-page/src/components/practice/UseIdComp.tsx",
+          "hash": "15792802812162125318"
+        },
+        {
+          "file": "next-page/src/components/practice/UseLayoutEffect.tsx",
+          "hash": "4717519971141243585"
+        },
+        {
+          "file": "next-page/src/components/practice/UseMemoComp.tsx",
+          "hash": "11321444267046724257"
+        },
+        {
+          "file": "next-page/src/components/practice/UseReducerComp.tsx",
+          "hash": "1986422060538391611"
+        },
+        {
+          "file": "next-page/src/components/practice/UseRefComp.tsx",
+          "hash": "9557891905961243706"
+        },
+        {
+          "file": "next-page/src/components/practice/UseThrottleComp.tsx",
+          "hash": "13153904604860892301"
+        },
+        {
+          "file": "next-page/src/components/practice/hooks/UseDebounce.tsx",
+          "hash": "16449018118077086479"
+        },
+        {
+          "file": "next-page/src/components/practice/hooks/useThrottle.tsx",
+          "hash": "17773858728631328886"
+        },
+        {
+          "file": "next-page/src/components/recoil/Atom.ts",
+          "hash": "16620721219578552253"
+        },
+        {
+          "file": "next-page/src/components/recoil/RecoilCounterTutorialComp.tsx",
+          "hash": "2816683209132108730"
+        },
+        {
+          "file": "next-page/src/components/recoil/RecoilMainComp.tsx",
+          "hash": "9258095765087407376"
+        },
+        {
+          "file": "next-page/src/context/ThemeContext.tsx",
+          "hash": "6757613495633868488"
+        },
+        {
+          "file": "next-page/src/index.css",
+          "hash": "14056909652331273425"
+        },
+        {
+          "file": "next-page/src/page.tsx",
+          "hash": "11483191482460223968"
+        },
+        {
+          "file": "next-page/src/reportWebVitals.tsx",
+          "hash": "15945111928185280618"
+        },
+        {
+          "file": "next-page/src/setupTests.tsx",
+          "hash": "16903885983588411080"
+        },
+        {
+          "file": "next-page/src/styles/App.css",
+          "hash": "18145312242689509503"
+        },
+        {
+          "file": "next-page/src/styles/TopicDetail.css",
+          "hash": "11694602387305849030"
+        },
+        {
+          "file": "next-page/src/styles/TopicsList.css",
+          "hash": "13973164980657964023"
+        },
+        {
+          "file": "next.config.ts",
+          "hash": "17157214668998829023"
+        },
+        {
+          "file": "nx.json",
+          "hash": "9440233385568495352"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "2488284115451614067"
+        },
+        {
+          "file": "package.json",
+          "hash": "13763261340590874426",
+          "deps": [
+            "npm:@eslint/eslintrc",
+            "npm:@tailwindcss/postcss",
+            "npm:@types/node",
+            "npm:@types/prismjs",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:@types/react-helmet",
+            "npm:@types/react-syntax-highlighter",
+            "npm:eslint",
+            "npm:eslint-config-next",
+            "npm:gh-pages",
+            "npm:tailwindcss",
+            "npm:ts-loader",
+            "npm:typescript",
+            "npm:nx",
+            "npm:framer-motion",
+            "npm:next",
+            "npm:prismjs",
+            "npm:react",
+            "npm:react-dom",
+            "npm:react-helmet",
+            "npm:react-router-dom",
+            "npm:react-syntax-highlighter",
+            "npm:recoil",
+            "npm:styled-components",
+            "npm:web-vitals"
+          ]
+        },
+        {
+          "file": "postcss.config.mjs",
+          "hash": "535692822154927684"
+        },
+        {
+          "file": "public/file.svg",
+          "hash": "15617830351863523835"
+        },
+        {
+          "file": "public/globe.svg",
+          "hash": "9134466864871335697"
+        },
+        {
+          "file": "public/next.svg",
+          "hash": "8300767200008744458"
+        },
+        {
+          "file": "public/vercel.svg",
+          "hash": "3007623926711696394"
+        },
+        {
+          "file": "public/window.svg",
+          "hash": "16677869292061012332"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "16505881292448434709"
+        }
+      ]
+    }
+  }
+}
