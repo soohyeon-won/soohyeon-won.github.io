@@ -8,8 +8,6 @@
 //     }
 // }
 
-import React from "react";
-
 interface Topic {
     id: number;
     title: string;
