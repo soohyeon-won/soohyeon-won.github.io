@@ -35,7 +35,8 @@ export default async function RootLayout({
   // 서버에서 실행 됨
   // Javascript disable처리해도 데이터가 노출됨
   // 정적 페이지 로드가 되었기 떄문
-  const response = await fetch('http://localhost:9999/topics');
+  console.log('process.env.API_URL',process.env.API_URL);
+  const response = await fetch(process.env.API_URL+'/topics');
   const topics = await response.json();
 
   return (

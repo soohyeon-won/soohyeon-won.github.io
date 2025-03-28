@@ -72,6 +72,8 @@ function DisplayCounter() {
 */
 export const RecoilCounterTutorialComp = () => {
 
+    console.log('NEXT_PUBLIC_API_URL', process.env.NEXT_PUBLIC_API_URL)
+
     return (
         <div>
             <DisplayCounter />

@@ -8,6 +8,10 @@ export function Control() {
     console.log('test',params);
     const id = params.id;
     
+    // 클라이언트 컴포넌트에서는 process.env 사용 시 NEXT_PUBLIC_ 붙여야 함
+    console.log('API_URL', process.env.API_URL)
+    console.log('NEXT_PUBLIC_API_URL', process.env.NEXT_PUBLIC_API_URL)
+
     return (
         <>
         {id ? <>
