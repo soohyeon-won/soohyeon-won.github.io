@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { useEffect, useState } from "react";
+import { Control } from "@/next-page/src/components/next/Control";
 
 {
   /* 
@@ -33,6 +33,8 @@ export default async function RootLayout({
 }>) {
 
   // 서버에서 실행 됨
+  // Javascript disable처리해도 데이터가 노출됨
+  // 정적 페이지 로드가 되었기 떄문
   const response = await fetch('http://localhost:9999/topics');
   const topics = await response.json();
 
@@ -45,6 +47,7 @@ export default async function RootLayout({
             <p>{topic.content}</p>
           </div>
         ))}
+        <Control></Control>
         {children}
       </body>
     </html>

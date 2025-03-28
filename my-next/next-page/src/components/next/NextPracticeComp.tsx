@@ -4,6 +4,7 @@
 // build -> start 하고 크롬 인스펙터를 보면 하단에 서빙된 데이터가 작아진 걸 볼 수 있음
 
 import Link from "next/link";
+import { Control } from "./Control";
 
 // * Routing
 // http://a.com/segment/segment => domain + path
@@ -40,12 +41,12 @@ export const NextPracticeComp = () => {
                 <li><a href="/read/2">css</a></li>
             </ol>
             <ol>
-                <li><a href="/create">create</a></li>
-                <li><a href="/update">update</a></li>
-                <li><a href="/delete">delete</a></li>
-
+                <Control />
                 <li><Link href="/delete">Nextjs Link</Link></li>
             </ol>
+
+
         </div>
     );
 };
+
